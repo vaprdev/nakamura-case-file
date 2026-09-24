@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Whatever Happened to Nakamura?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="stain" style="left: 150px; top: 560px; width: 190px; height: 190px"></div>
+      <div class="stain ash" style="left: 1370px; top: 230px; width: 120px; height: 50px"></div>
+
+      <div class="stack" data-look="1.2">
+        <div>OKAFOR, D.</div>
+        <div>FY97 SYNERGY AUDIT</div>
+        <div>HR — MISC. <span class="r">xxxxxx</span></div>
+      </div>
+      <svg class="item d-mug" data-look="1.4" viewBox="0 0 200 170">
+        <defs>
+          <radialGradient id="mg-rim" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f3eee2" /><stop offset=".8" stop-color="#cfc7b5" /><stop offset="1" stop-color="#857e6f" /></radialGradient>
+          <linearGradient id="mg-wall" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e0d9c9" /><stop offset=".5" stop-color="#a39c8c" /><stop offset="1" stop-color="#5e584d" /></linearGradient>
+          <radialGradient id="mg-coffee" cx="45%" cy="42%" r="60%"><stop offset="0" stop-color="#3b2313" /><stop offset=".7" stop-color="#1f1007" /><stop offset="1" stop-color="#0d0603" /></radialGradient>
+          <linearGradient id="mg-handle" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eee8da" /><stop offset=".6" stop-color="#bfb7a5" /><stop offset="1" stop-color="#7d7768" /></linearGradient>
+        </defs>
+        <path d="M140,62 C176,48 198,72 192,90 C187,108 170,117 142,110" stroke="url(#mg-handle)" stroke-width="17" fill="none" stroke-linecap="round" />
+        <circle cx="80" cy="85" r="74" fill="url(#mg-rim)" />
+        <path d="M22,48 A74,74 0 0 1 110,16" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" />
+        <circle cx="80" cy="85" r="66" fill="url(#mg-wall)" />
+        <circle cx="80" cy="87" r="60" fill="url(#mg-coffee)" />
+        <circle cx="80" cy="87" r="59" fill="none" stroke="#6b4323" stroke-width="2" opacity=".55" />
+        <circle cx="80" cy="87" r="52" fill="none" stroke="#4a2c15" stroke-width="1" opacity=".35" />
+        <ellipse cx="62" cy="66" rx="24" ry="9" fill="rgba(255,240,220,.1)" transform="rotate(-32 62 66)" />
+        <path d="M26,52 l7,-4 l2,7 z" fill="#8a8272" />
+        <path d="M150,100 C151,110 148,118 152,126" stroke="#5a3a1c" stroke-width="3" opacity=".45" fill="none" stroke-linecap="round" />
+      </svg>
+
+      <svg class="item d-ashtray" data-look="2.2" viewBox="0 0 200 200">
+        <defs>
+          <radialGradient id="at-body" cx="40%" cy="34%" r="72%"><stop offset="0" stop-color="#8d857a" /><stop offset=".55" stop-color="#4a443d" /><stop offset=".9" stop-color="#231f1b" /><stop offset="1" stop-color="#141110" /></radialGradient>
+          <radialGradient id="at-well" cx="50%" cy="42%" r="60%"><stop offset="0" stop-color="#36312c" /><stop offset=".8" stop-color="#1a1714" /><stop offset="1" stop-color="#0a0807" /></radialGradient>
+          <linearGradient id="cig-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf8f0" /><stop offset=".35" stop-color="#ece6d8" /><stop offset=".8" stop-color="#bdb5a5" /><stop offset="1" stop-color="#8f887b" /></linearGradient>
+          <linearGradient id="cig-cork" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0c98f" /><stop offset=".4" stop-color="#d7a66a" /><stop offset=".85" stop-color="#9c6d3b" /><stop offset="1" stop-color="#6d4924" /></linearGradient>
+          <linearGradient id="cig-ash" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcd9d3" /><stop offset=".5" stop-color="#a5a19a" /><stop offset="1" stop-color="#5f5b55" /></linearGradient>
+          <linearGradient id="cig-char" x1="0" x2="1"><stop offset="0" stop-color="#2a1d12" /><stop offset=".5" stop-color="#6b5237" stop-opacity=".6" /><stop offset="1" stop-color="#6b5237" stop-opacity="0" /></linearGradient>
+          <radialGradient id="cig-ember"><stop offset="0" stop-color="#fff1b0" /><stop offset=".35" stop-color="#ff9a3c" /><stop offset=".75" stop-color="#c7361a" /><stop offset="1" stop-color="#5a1208" /></radialGradient>
+          <filter id="grit" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="3" seed="2" />
+            <feColorMatrix type="matrix" values="0.4 0.4 0.4 0 0.2  0.4 0.4 0.4 0 0.2  0.4 0.4 0.4 0 0.2  0 0 0 0 1" />
+            <feBlend in2="SourceGraphic" mode="multiply" />
+            <feComposite in2="SourceAlpha" operator="in" />
+          </filter>
+          <filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" /></filter>
+          <symbol id="butt" viewBox="0 0 60 12" width="60" height="12">
+            <rect x="24" y="1" width="35" height="10" rx="1.5" fill="url(#cig-cork)" filter="url(#grit)" />
+            <rect x="24" y="1" width="1.4" height="10" fill="#c9a24c" />
+            <rect x="7" y="1.3" width="18" height="9.4" fill="url(#cig-paper)" />
+            <rect x="7" y="1.3" width="9" height="9.4" fill="url(#cig-char)" />
+            <path d="M8,1.3 C5,2 3,3.4 4.2,5 C2.4,6.4 4,9 8,10.7 Z" fill="#2c2620" />
+            <path d="M13,1.4 l1.5,3 l-1,2.5 l1.8,3.6 M19,1.4 l-1,4 l1.2,5" stroke="rgba(90,80,70,.45)" stroke-width=".6" fill="none" />
+          </symbol>
+          <symbol id="cig" viewBox="0 0 150 14" width="150" height="14">
+            <rect x="112" y="1" width="37" height="12" rx="1.5" fill="url(#cig-cork)" filter="url(#grit)" />
+            <rect x="112" y="1" width="1.6" height="12" fill="#c9a24c" />
+            <rect x="115" y="1" width=".7" height="12" fill="#c9a24c" opacity=".7" />
+            <rect x="23" y="1.2" width="90" height="11.6" fill="url(#cig-paper)" />
+            <text x="96" y="9" font-size="4.4" fill="#8c2a24" font-family="Georgia, serif" font-style="italic">No.7</text>
+            <rect x="22" y="1.2" width="11" height="11.6" fill="url(#cig-char)" />
+            <rect x="3" y="1.7" width="19" height="10.6" rx="2.2" fill="url(#cig-ash)" filter="url(#grit)" />
+            <path d="M9,1.9 l.4,10.2 M15,1.9 l.8,10.2" stroke="rgba(60,55,50,.5)" stroke-width=".6" />
+            <ellipse class="ember-glow" cx="21" cy="7" rx="8" ry="9" fill="#ff7a2a" opacity=".4" filter="url(#glow)" />
+            <rect x="18.5" y="1.4" width="5" height="11.2" rx="1.6" fill="url(#cig-ember)" />
+          </symbol>
+        </defs>
+        <circle cx="100" cy="100" r="95" fill="url(#at-body)" />
+        <g fill="#0e0c0a">
+          <rect x="160" y="93" width="40" height="14" rx="7" transform="rotate(-25 100 100)" />
+          <rect x="160" y="93" width="40" height="14" rx="7" transform="rotate(95 100 100)" />
+          <rect x="160" y="93" width="40" height="14" rx="7" transform="rotate(215 100 100)" />
+        </g>
+        <path d="M24,62 A84,84 0 0 1 112,17" stroke="rgba(255,255,255,.4)" stroke-width="3" fill="none" stroke-linecap="round" />
+        <circle cx="100" cy="100" r="64" fill="url(#at-well)" />
+        <path d="M150,130 A62,62 0 0 1 70,156" stroke="rgba(255,255,255,.14)" stroke-width="2" fill="none" />
+        <g filter="url(#grit)">
+          <ellipse cx="96" cy="112" rx="34" ry="22" fill="#a9a49c" />
+          <ellipse cx="118" cy="96" rx="16" ry="11" fill="#8f8a83" />
+          <ellipse cx="80" cy="92" rx="12" ry="8" fill="#7b766f" />
+        </g>
+        <circle cx="70" cy="120" r="2" fill="#3a3632" />
+        <circle cx="124" cy="120" r="1.6" fill="#3a3632" />
+        <use href="#butt" transform="translate(58 122) rotate(18) scale(.95)" />
+        <use href="#butt" transform="translate(126 78) rotate(128) scale(.9)" />
+        <g transform="translate(92 140) rotate(-58) scale(.9)">
+          <use href="#butt" />
+          <path d="M50,1.2 C47,3 47,9 50,10.8 L56,10.8 C58,8 58,4 56,1.2 Z" fill="#8e1f2a" opacity=".6" />
+        </g>
+        <use id="ashtray-cig" href="#cig" transform="translate(100 100) rotate(-25) translate(-30 -7)" />
+        <circle class="flare" cx="92" cy="104" r="10" fill="#ff8a30" filter="url(#glow)" />
+      </svg>
+      <svg class="item d-smoke" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <filter id="smokef" x="-60%" y="-20%" width="220%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.035" numOctaves="3" seed="7">
+              <animate attributeName="baseFrequency" dur="16s" values="0.012 0.035;0.018 0.05;0.012 0.035" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="46" xChannelSelector="R" yChannelSelector="G" />
+            <feGaussianBlur stdDeviation="2.4" />
+          </filter>
+        </defs>
+        <g filter="url(#smokef)" fill="none" stroke-linecap="round">
+          <path d="M73,112 C70,80 84,60 76,30 C68,0 88,-30 80,-70 C72,-110 96,-150 86,-200 C80,-230 100,-260 94,-290" stroke="rgba(225,220,210,.34)" stroke-width="5" />
+          <path d="M74,100 C82,70 64,40 72,10 C80,-20 60,-60 70,-100 C78,-140 58,-180 66,-230" stroke="rgba(225,220,210,.2)" stroke-width="10" />
+          <path d="M76,60 C96,30 82,-10 104,-50 C122,-90 100,-140 124,-190 C140,-230 120,-270 138,-310" stroke="rgba(225,220,210,.12)" stroke-width="18" />
+        </g>
+      </svg>
+
+      <svg class="item d-pack" data-look="1" viewBox="0 0 110 170">
+        <defs>
+          <linearGradient id="pk-red" x1="0" x2="1"><stop offset="0" stop-color="#4d110f" /><stop offset=".18" stop-color="#7c1f1b" /><stop offset=".55" stop-color="#8a2520" /><stop offset=".85" stop-color="#6d1a16" /><stop offset="1" stop-color="#3d0d0b" /></linearGradient>
+          <linearGradient id="pk-cream" x1="0" x2="1"><stop offset="0" stop-color="#b9b19d" /><stop offset=".2" stop-color="#ece5d3" /><stop offset=".6" stop-color="#f2ecdc" /><stop offset="1" stop-color="#aea691" /></linearGradient>
+          <linearGradient id="pk-foil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8c8c8c" /><stop offset=".25" stop-color="#f2f2f2" /><stop offset=".45" stop-color="#9d9d9d" /><stop offset=".7" stop-color="#e6e6e6" /><stop offset="1" stop-color="#6f6f6f" /></linearGradient>
+          <linearGradient id="pk-card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b1a792" /><stop offset="1" stop-color="#e1d8c6" /></linearGradient>
+          <linearGradient id="pk-cello" x1="0" y1="0" x2="1" y2="1"><stop offset=".42" stop-color="#fff" stop-opacity="0" /><stop offset=".47" stop-color="#fff" stop-opacity=".22" /><stop offset=".52" stop-color="#fff" stop-opacity="0" /><stop offset=".72" stop-color="#fff" stop-opacity="0" /><stop offset=".75" stop-color="#fff" stop-opacity=".12" /><stop offset=".78" stop-color="#fff" stop-opacity="0" /></linearGradient>
+          <radialGradient id="pk-tip"><stop offset="0" stop-color="#ecc58f" /><stop offset=".7" stop-color="#c9955a" /><stop offset="1" stop-color="#7d552d" /></radialGradient>
+          <clipPath id="pk-clip"><rect x="3" y="34" width="104" height="134" rx="2.5" /></clipPath>
+        </defs>
+        <path d="M5,34 L8,3 Q9,0 12,0 L98,0 Q101,0 102,3 L105,34 Z" fill="url(#pk-card)" />
+        <path d="M9,3 L101,3" stroke="#7c1f1b" stroke-width="3" />
+        <rect x="5" y="30" width="100" height="5" fill="rgba(0,0,0,.35)" />
+        <rect x="3" y="34" width="104" height="134" rx="2.5" fill="url(#pk-cream)" />
+        <g clip-path="url(#pk-clip)">
+          <path d="M3,170 L3,92 L55,70 L107,92 L107,170 Z" fill="url(#pk-red)" />
+          <path d="M3,88 L55,66 L107,88" stroke="#b8963e" stroke-width="1.4" fill="none" />
+        </g>
+        <rect x="7" y="36" width="96" height="22" fill="#d8cfbd" />
+        <path d="M9,38 L22,36 L30,40 L44,36 L58,39 L70,36 L84,40 L101,37 L101,57 L9,57 Z" fill="url(#pk-foil)" />
+        <path d="M22,36 L25,56 M44,36 L41,56 M70,36 L73,56 M84,40 L82,56" stroke="rgba(0,0,0,.22)" stroke-width=".6" />
+        <g filter="url(#grit)">
+          <circle cx="20" cy="47" r="6.2" fill="url(#pk-tip)" />
+          <circle cx="33" cy="47" r="6.2" fill="url(#pk-tip)" />
+          <circle cx="59" cy="47" r="6.2" fill="url(#pk-tip)" />
+          <circle cx="72" cy="47" r="6.2" fill="url(#pk-tip)" />
+          <circle cx="85" cy="47" r="6.2" fill="url(#pk-tip)" />
+        </g>
+        <circle cx="46" cy="47" r="6" fill="#2a2520" />
+        <rect x="3" y="58" width="104" height="2" fill="rgba(210,180,90,.6)" />
+        <circle cx="55" cy="97" r="7.5" fill="none" stroke="#c9a24c" stroke-width="1" />
+        <text x="55" y="100" font-size="8" text-anchor="middle" fill="#c9a24c" font-family="Georgia, serif">7</text>
+        <text x="55" y="124" font-size="22" text-anchor="middle" fill="#efe6cf" font-family="Georgia, serif" font-style="italic">No. 7</text>
+        <text x="55" y="136" font-size="6" text-anchor="middle" fill="#e2d7bd" font-family="Georgia, serif" letter-spacing="1.6">FILTER</text>
+        <text x="55" y="144" font-size="5" text-anchor="middle" fill="#e2d7bd" font-family="Georgia, serif" letter-spacing="1.2">CIGARETTES</text>
+        <rect x="10" y="151" width="90" height="12" fill="#efe8d6" stroke="#222" stroke-width=".4" />
+        <text x="55" y="156" font-size="2.9" text-anchor="middle" fill="#111" font-family="Arial, sans-serif">SURGEON GENERAL'S WARNING: Smoking Causes Lung</text>
+        <text x="55" y="160" font-size="2.9" text-anchor="middle" fill="#111" font-family="Arial, sans-serif">Cancer, Heart Disease, Emphysema, And May Complicate Pregnancy.</text>
+        <rect x="3" y="34" width="104" height="134" rx="2.5" fill="url(#pk-cello)" stroke="rgba(255,255,255,.18)" stroke-width=".8" />
+      </svg>
+
+      <svg class="item d-lighter" data-look="0.4" viewBox="0 0 44 72">
+        <defs>
+          <linearGradient id="zp" x1="0" x2="1"><stop offset="0" stop-color="#5d5d60" /><stop offset=".12" stop-color="#b9b9bc" /><stop offset=".3" stop-color="#ececee" /><stop offset=".45" stop-color="#9c9c9f" /><stop offset=".62" stop-color="#d6d6d8" /><stop offset=".8" stop-color="#8a8a8d" /><stop offset="1" stop-color="#4e4e51" /></linearGradient>
+          <pattern id="brush" width="1.3" height="72" patternUnits="userSpaceOnUse"><rect width=".5" height="72" fill="rgba(255,255,255,.07)" /></pattern>
+        </defs>
+        <rect x="2" y="2" width="40" height="68" rx="5" fill="url(#zp)" />
+        <rect x="2" y="2" width="40" height="68" rx="5" fill="url(#brush)" />
+        <path d="M2,24 H42" stroke="rgba(0,0,0,.55)" stroke-width="1" />
+        <path d="M2,25.2 H42" stroke="rgba(255,255,255,.35)" stroke-width=".6" />
+        <rect x="38" y="18" width="4.5" height="13" rx="1" fill="#79797c" />
+        <text x="22" y="48" font-size="4.2" text-anchor="middle" fill="rgba(40,40,42,.7)" font-family="Georgia, serif" letter-spacing=".6">NORTHSYAR</text>
+        <text x="22" y="54" font-size="3.2" text-anchor="middle" fill="rgba(40,40,42,.6)" font-family="Georgia, serif">5 YEARS · 1992</text>
+      </svg>
+
+      <svg class="item d-matches" data-look="1.4" viewBox="0 0 84 52">
+        <defs>
+          <linearGradient id="mb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#27324d" /><stop offset="1" stop-color="#141b2c" /></linearGradient>
+        </defs>
+        <rect x="1" y="1" width="82" height="50" rx="2" fill="url(#mb)" />
+        <rect x="1" y="38" width="82" height="13" fill="#2e3a57" />
+        <rect x="3" y="41" width="78" height="7" fill="#6b5a44" filter="url(#grit)" />
+        <text x="42" y="18" font-size="10" text-anchor="middle" fill="#c9a24c" font-family="Georgia, serif" font-style="italic">The Blue Lantern</text>
+        <text x="42" y="25" font-size="3.4" text-anchor="middle" fill="#9fa8c0" font-family="Arial, sans-serif" letter-spacing=".8">COCKTAILS · DANCING · OPEN LATE</text>
+        <text x="60" y="35" font-size="6" fill="rgba(240,236,225,.8)" font-family="Bradley Hand, Segoe Print, cursive" transform="rotate(-6 60 35)">11/3 — 11pm</text>
+      </svg>
+
+      <svg class="item d-floppy" data-look="1.2" viewBox="0 0 90 94">
+        <defs>
+          <linearGradient id="fl-body" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34343a" /><stop offset="1" stop-color="#131315" /></linearGradient>
+          <linearGradient id="fl-metal" x1="0" x2="1"><stop offset="0" stop-color="#7c7c80" /><stop offset=".3" stop-color="#d4d4d7" /><stop offset=".6" stop-color="#9a9a9d" /><stop offset="1" stop-color="#c8c8cb" /></linearGradient>
+        </defs>
+        <path d="M3,0 H84 L90,6 V91 Q90,94 87,94 H3 Q0,94 0,91 V3 Q0,0 3,0 Z" fill="url(#fl-body)" />
+        <rect x="22" y="0" width="46" height="30" fill="url(#fl-metal)" />
+        <rect x="48" y="4" width="10" height="22" rx="1" fill="#1a1a1c" />
+        <rect x="8" y="38" width="74" height="52" rx="1.5" fill="#e8e3d6" />
+        <path d="M12,52 H78 M12,62 H78 M12,72 H78 M12,82 H78" stroke="rgba(70,90,160,.25)" stroke-width=".6" />
+        <rect x="12" y="44" width="36" height="6" fill="#2b2723" />
+        <text x="14" y="60" font-size="7.5" fill="#1f2a4a" font-family="Bradley Hand, Segoe Print, cursive">DO NOT ERASE</text>
+        <text x="14" y="70" font-size="6" fill="#1f2a4a" font-family="Bradley Hand, Segoe Print, cursive">11/3/97 — B.N.</text>
+        <rect x="3" y="82" width="6" height="7" fill="#08080a" />
+        <rect x="80" y="82" width="6" height="7" fill="#08080a" />
+      </svg>
+
+      <div class="folder">
+        <div class="base"></div>
+        <div class="fastener"></div>
+
+        <div class="pages">
+          <!-- 1 -->
+          <section class="page">
+            <div class="letterhead"><span>NORTHSYAR COMMUNICATIONS</span><span>PERSONNEL — CONFIDENTIAL</span></div>
+            <h1 data-read data-speed="220" data-hold="1.5">Whatever happened to Nakamura?</h1>
+            <dl data-read>
+              <dt>NAME</dt>
+              <dd>NAKAMURA, BARBARA K.</dd>
+              <dt>TITLE</dt>
+              <dd>GROUPWARE ADMINISTRATOR</dd>
+              <dt>DEPT.</dt>
+              <dd>INFORMATION SYSTEMS, 4TH FLOOR</dd>
+              <dt>EMPLOYEE</dt>
+              <dd>0093-214</dd>
+              <dt>ISSUED</dt>
+              <dd>09/14/93</dd>
+              <dt>LAST SEEN</dt>
+              <dd>11/03/97, 23:58</dd>
+              <dt>STATUS</dt>
+              <dd>UNKNOWN</dd>
+            </dl>
+            <p data-read>
+              File reopened 01/09/98 at the request of <span class="r">xxxxxxxxxxxxx</span>. Assigned: Det.
+              <span class="r">xxxxxxxx</span>. Items 3, 9 and 11 removed prior to transfer by order of
+              <span class="r">xxxxxxxxxxxxxxxxx</span>.
+            </p>
+            <div class="stamp" style="right: 36px; top: 330px">MISSING</div>
+            <div class="stain" style="left: -40px; bottom: -30px; width: 210px; height: 210px"></div>
+          </section>
+
+          <!-- 2 -->
+          <section class="page">
+            <div class="letterhead"><span>FIELD NOTES — DET. <span class="r">xxxxxxxx</span></span><span>I.</span></div>
+            <p data-read>
+              The file came to me the way bad news always does: in a manila folder, late on a Friday, from a man who
+              wouldn't look me in the eye.
+            </p>
+            <p data-read>
+              It was thin for a life. Fourteen items, three of them missing. A woman boiled down to paper, and the
+              paper already going yellow at the edges.
+            </p>
+            <p data-read>
+              Barbara K. Nakamura carried the mail for eleven hundred people who never learned her name. Every memo,
+              every rumor, every midnight apology from an executive to someone who wasn't his wife passed through her
+              hands, and she never dropped a single one.
+            </p>
+            <p data-read>
+              On the third of November she didn't come in. The building didn't blink. Buildings like that never do.
+              They just keep humming, lights on, air breathing through the vents, pretending there was never anybody
+              there to miss.
+            </p>
+            <p data-read>I lit a cigarette and opened the file. I should have left it closed.</p>
+            <div class="stain spill" style="right: -60px; top: 330px; width: 260px; height: 260px"></div>
+          </section>
+
+          <!-- 3 -->
+          <section class="page news">
+            <div class="masthead">
+              <strong>THE NORTHSYAR SIGNAL</strong>
+              <span>VOL. 4 · NO. 3 · MARCH 1995 · CONNECTING PEOPLE TO INFORMATION TO PEOPLE™</span>
+            </div>
+            <h1 data-read data-speed="260">Employee of the Month: Barb Keeps Us Connected!</h1>
+            <div class="columns">
+              <div class="halftone" data-read="look" data-hold="2.2">
+                <div></div>
+                <small>Barb at her workstation, Server Room B.</small>
+              </div>
+              <p data-read>
+                If you've sent an e-mail this year, you've met Barb — you just didn't know it! As our Groupware
+                Administrator, Barbara keeps more than 1,100 mailboxes cruising down the Information Superhighway.
+              </p>
+              <p data-read>
+                This quarter Barb led our migration from cc:Mail to Lotus Notes® three weeks ahead of schedule — a true
+                Paradigm Shift in Empowered Communication!
+              </p>
+              <p data-read>
+                Coworkers describe Barb as "quiet," "thorough" and "always here late." Asked for the secret to her
+                success, Barb just smiled: <b>"I read everything."</b>
+              </p>
+              <p data-read>
+                In her spare time Barb enjoys crosswords, her garden and <span class="r">xxxxxxxxxxxx</span>.
+                Congratulations, Barb! Keep on Synergizing!
+              </p>
+            </div>
+            <div class="pencil" data-read data-speed="150" style="position: absolute; left: 60px; bottom: 44px; transform: rotate(-4deg)">
+              she wasn't joking.
+            </div>
+            <div class="stain" style="right: 20px; bottom: 10px; width: 170px; height: 170px"></div>
+          </section>
+
+          <!-- 3b: the 10x engineer -->
+          <section class="page">
+            <div class="letterhead"><span>EVIDENCE 5-C · SERVER ROOM B</span><span>06/28/97</span></div>
+            <div class="shot" data-read="look" data-hold="2.6" style="aspect-ratio: 4 / 2.5">
+              <img src="photos/office.jpg" alt="" />
+              <span class="ts">'97 6 28</span>
+            </div>
+            <div class="shot-caption">Server Room B, 4th floor. Found in her desk, photographer unknown.</div>
+            <p data-read>
+              A Saturday, and everybody else had gone to the lake. Barbara stayed in and wrote a patch that cut the
+              overnight mail run from nine hours to eleven minutes. She never put her name on it.
+            </p>
+            <pre class="code" data-read data-speed="420">/* router.c  rev 4.2  -- B.K.N. 06/28/97 */
+for (q = spool; q; q = q->next) {
+    if (q->dest &amp; EXEC_FLOOR)
+        copy_to(ARCHIVE_B, q);   /* ?? */
+    deliver(q);
+}</pre>
+            <p data-read>
+              Line four copied every executive message to a tape nobody knew existed. Not a bug. Insurance.
+            </p>
+            <p data-read class="pencil">a 10x engineer, paid like a temp.</p>
+            <div class="stain" style="right: -40px; top: 250px; width: 170px; height: 170px"></div>
+          </section>
+
+          <!-- 4 -->
+          <section class="page">
+            <div class="letterhead"><span>ANNUAL PERFORMANCE &amp; EMPOWERMENT REVIEW</span><span>FY1996</span></div>
+            <p data-read>EMPLOYEE: NAKAMURA, B.K. &nbsp; REVIEWER: <span class="r">xxxxxxxxxx</span> &nbsp; 12/13/96</p>
+            <table class="form">
+              <tr><td></td><td>EXCEEDS</td><td>MEETS</td><td>NEEDS IMPR.</td></tr>
+              <tr data-read><td>Ownership &amp; Uptime</td><td>☒</td><td>☐</td><td>☐</td></tr>
+              <tr data-read><td>Teamwork / Synergy</td><td>☐</td><td>☒</td><td>☐</td></tr>
+              <tr data-read><td>Customer Focus</td><td>☒</td><td>☐</td><td>☐</td></tr>
+              <tr data-read><td>Discretion</td><td>☐</td><td>☐</td><td>☒</td></tr>
+              <tr data-read><td>Adherence to Retention Policy</td><td>☐</td><td>☐</td><td>☒</td></tr>
+            </table>
+            <p data-read>
+              REVIEWER COMMENTS: Barbara continues to deliver best-in-class uptime and is a valued member of the IS
+              family. However, she has on several occasions raised questions regarding the retention schedule for
+              <span class="r">xxxxxxxxx</span> mailboxes (see <span class="r">xxxxxx</span>). This is outside her
+              scope. Barbara is encouraged to focus on value-add activities and leave policy to the stakeholders.
+              RECOMMENDATION: <span class="r">xxxxxxxxxxxxxxxxxxxxx</span>.
+            </p>
+            <p data-read class="pencil">why does the retention schedule only apply to the <span class="r">xx</span> floor? — B.N.</p>
+            <div class="stain burn" style="right: 60px; bottom: 90px; width: 46px; height: 46px"></div>
+            <div class="stain ash" style="right: 30px; bottom: 60px; width: 120px; height: 60px"></div>
+          </section>
+
+          <!-- 5 -->
+          <section class="page">
+            <div class="letterhead"><span>MEMORANDUM — STRICTLY CONFIDENTIAL</span><span>10/21/97</span></div>
+            <p data-read>
+              FROM: Office of the <span class="r">xxxxxxxx</span><br />
+              TO: <span class="r">xxxxxxx</span>, <span class="r">xxxxxx</span>, IS Leadership<br />
+              RE: PROJECT <span class="r">xxxxxxxx</span> / Q4 INFORMATION HYGIENE INITIATIVE
+            </p>
+            <p data-read>
+              As Northsyar right-sizes for the 21st century, we must leverage our core competencies and proactively
+              manage our information footprint.
+            </p>
+            <p data-read>
+              Effective 11/01/97, all electronic correspondence on the <span class="r">xx</span> floor older than
+              <span class="r">xx</span> days will be purged nightly. Backup media containing executive mailboxes will
+              be <span class="r">xxxxxxxx</span> off-site and <span class="r">xxxxxxxxx</span>.
+            </p>
+            <p data-read>
+              This is a paradigm shift in how we think about Information. Remember: information that does not exist
+              cannot be <span class="r">xxxxxxxx</span> by <span class="r">xxxxxxxx xx xxxxxxxxxx</span>.
+            </p>
+            <p data-read>Direct all questions to <span class="r">xxxxxxxx</span>. Do not use e-mail.</p>
+            <div class="stamp" style="right: 40px; top: 60px; font-size: 22px">EYES ONLY</div>
+            <p data-read class="pencil" style="margin-top: 26px">
+              say "hygiene" enough times and nobody asks what you're washing off. two weeks later she was gone.
+            </p>
+            <div class="stain" style="left: -50px; top: 420px; width: 200px; height: 200px"></div>
+          </section>
+
+          <!-- 5b: the car -->
+          <section class="page">
+            <div class="letterhead"><span>EVIDENCE 15 · PARKING STRUCTURE, LEVEL B2</span><span>10/09/97</span></div>
+            <div class="shot" data-read="look" data-hold="2.6">
+              <img src="photos/car.jpg" alt="" />
+              <span class="ts">10 09 97 21:14</span>
+            </div>
+            <div class="shot-caption">Long lens, from the stairwell, level B2. The engine was already running.</div>
+            <dl data-read>
+              <dt>VEHICLE</dt>
+              <dd>1996 FERRARI F355 BERLINETTA, BLACK</dd>
+              <dt>PLATE</dt>
+              <dd>CA <span class="r">xxxxxxx</span></dd>
+              <dt>REG. OWNER</dt>
+              <dd><span class="r">xxxxxxxx</span> HOLDINGS LTD., P.O. BOX 7</dd>
+            </dl>
+            <p data-read>
+              Northsyar paid its groupware administrator thirty-one thousand a year before taxes. The car she was
+              sitting in, a black Ferrari with the dome light off, cost more than her house.
+            </p>
+            <p data-read>
+              She drove an '88 Corolla with rust on the fenders. Somebody else drove her home. Every other
+              Thursday, level B2, nine-fifteen.
+            </p>
+            <p data-read class="pencil">who owns the Holdings? follow the P.O. box.</p>
+            <div class="stain" style="left: -50px; bottom: -40px; width: 200px; height: 200px"></div>
+          </section>
+
+          <!-- 5c: the affair -->
+          <section class="page">
+            <div class="letterhead"><span>EVIDENCE 16 · HOTEL MERIDIAN, THE GRILL ROOM</span><span>10/16/97</span></div>
+            <div class="shot" data-read="look" data-hold="2.8">
+              <img src="photos/dinner.jpg" alt="" />
+              <span class="ts">10 16 97 22:47</span>
+            </div>
+            <div class="shot-caption">Through the Grill Room window, from across Fourth Street. Table nine.</div>
+            <p data-read>
+              The Meridian keeps its lights low so married men can pretend nobody's watching. Somebody was. Table
+              nine, every other Thursday since August. Same wine. Same man, back to the glass. Men like him learn
+              early which way to face.
+            </p>
+            <div data-read style="margin: 4px 0 16px; padding: 10px 14px; background: #ece6d8; font-size: 11px; line-height: 1.7; transform: rotate(-1.2deg); box-shadow: 0 2px 6px rgba(0,0,0,.25)">
+              HOTEL MERIDIAN · GUEST FOLIO · RM 1114 · 10/16/97<br />
+              GUESTS: 2 &nbsp;·&nbsp; REGISTERED: MR. <span class="r">xxxxxxxxx</span><br />
+              GRILL ROOM (TABLE 9) .......... $186.40<br />
+              ROOM, 1 NIGHT ................. $219.00<br />
+              BILLED TO: NORTHSYAR CORP. AMEX ···· 4471
+            </div>
+            <p data-read>
+              The company paid for the room. Somebody upstairs made sure accounting never asked.
+            </p>
+            <p data-read class="pencil">love or leverage? maybe she didn't know either.</p>
+            <div class="stain burn" style="right: 50px; bottom: 60px; width: 42px; height: 42px"></div>
+            <div class="stain ash" style="right: 20px; bottom: 30px; width: 130px; height: 60px"></div>
+          </section>
+
+          <!-- 6 -->
+          <section class="page printout">
+            <pre data-read data-speed="360">
+NORTHSYAR01 · GROUPWARE AUDIT TRAIL · 11/03/97
+---------------------------------------------
+23:41:07  BNAKAMURA  LOGIN    CONSOLE 2
+23:44:52  BNAKAMURA  EXPORT   /MAIL/EXEC/<span class="r">xxxx</span>
+23:49:30  BNAKAMURA  COPY     A:\ (1.44MB)
+23:52:19  BNAKAMURA  SEND     TO: <span class="r">xxxxxxxx</span>
+                              "they know"
+23:57:41  <span class="r">xxxxxxx</span>    LOGIN    CONSOLE 2
+23:58:03  <span class="r">xxxxxxx</span>    DELETE   BNAKAMURA
+23:58:04  <span class="r">xxxxxxx</span>    PURGE    AUDIT 23:40-23:59
+---------------------------------------------
+** PURGE FAILED: LOCKED BY BACKUP JOB **</pre>
+            <p data-read>
+              Seventeen minutes. That's how long it takes to erase four years. Two logins on the same console, sixteen
+              seconds apart, and only one of them walked out of that room.
+            </p>
+            <p data-read>
+              The machine tried to forget. The backup job wouldn't let it. Turns out even a computer can't always lie
+              on command.
+            </p>
+            <div class="stain spill" style="right: -40px; bottom: -30px; width: 220px; height: 220px"></div>
+          </section>
+
+          <!-- 7 -->
+          <section class="page">
+            <div class="letterhead"><span>EVIDENCE 22 — LOBBY VCR, NORTHSYAR HQ</span><span>11/03/97</span></div>
+            <div class="stills">
+              <div class="cam" data-read="look" data-hold="2.4"><div class="feed"></div><span class="ts">CAM04 23:39:52</span></div>
+              <div class="cam" data-read="look" data-hold="1.8">
+                <div class="feed" style="background-position: 20% 80%; filter: grayscale(1) brightness(0.2) blur(2px)"></div>
+                <div class="blackout"></div>
+                <span class="ts">CAM07 23:57:30</span>
+              </div>
+              <div class="cam static" data-read="look" data-hold="1.4"><span class="ts">NO SIGNAL</span></div>
+            </div>
+            <p data-read>
+              Three frames. In the first she's crossing the lobby with a box under her arm, head down, like a woman
+              carrying something heavier than paper.
+            </p>
+            <p data-read>
+              The second is camera seven, the corridor outside Server Room B. Somebody took a marker to it. You don't
+              black out an empty hallway.
+            </p>
+            <p data-read>
+              The third is snow. The kind you get at four in the morning when the stations sign off and the set keeps
+              talking to nobody. Nothing. Nothing was exactly what they wanted me to find.
+            </p>
+          </section>
+
+          <!-- 8 -->
+          <section class="page">
+            <div class="letterhead"><span>INTERVIEW TRANSCRIPT · D. OKAFOR, IS</span><span>01/12/98</span></div>
+            <dl>
+              <dt data-read>Q:</dt>
+              <dd data-read>When did you last see her?</dd>
+              <dt data-read>A:</dt>
+              <dd data-read>
+                That night. Late. She was in Server Room B with the lights off, just the monitors. Said she'd found
+                something in the executive mail. Said she was making copies.
+              </dd>
+              <dt data-read>Q:</dt>
+              <dd data-read>Copies of what?</dd>
+              <dt data-read>A:</dt>
+              <dd data-read><span class="r">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span></dd>
+              <dt data-read>Q:</dt>
+              <dd data-read>Was she afraid?</dd>
+              <dt data-read>A:</dt>
+              <dd data-read>No. She seemed finished. Like she'd already made up her mind about something.</dd>
+              <dt data-read>Q:</dt>
+              <dd data-read>Who else was in the building?</dd>
+              <dt data-read>A:</dt>
+              <dd data-read>[long pause] I'm not supposed to answer that.</dd>
+            </dl>
+            <p data-read>[TAPE ENDS]</p>
+            <div class="stain" style="right: -30px; top: 80px; width: 180px; height: 180px"></div>
+            <div class="stain burn" style="left: 40px; bottom: 50px; width: 40px; height: 40px"></div>
+          </section>
+
+          <!-- 9 -->
+          <section class="page">
+            <div class="letterhead"><span>EVIDENCE 9-A · RECOVERED FROM ASHTRAY</span><span>DESK 4-117</span></div>
+            <div class="slip" data-read="look" data-hold="1">
+              <strong>WHILE YOU WERE OUT</strong>
+              TO: Barb &nbsp;&nbsp; DATE: 11/03 &nbsp;&nbsp; TIME: 6:10 PM<br />
+              M: <span class="r">xxxxxxxx</span> &nbsp; OF: <span class="r">xx</span> FLOOR<br />
+              ☒ TELEPHONED &nbsp; ☒ PLEASE CALL &nbsp; ☒ URGENT<br />
+              <span class="said">"He knows you pulled the tapes. Don't come in tonight. Don't use the Notes server."</span>
+            </div>
+            <p data-read>
+              Folded twice and half burned, like somebody changed their mind halfway through destroying it.
+            </p>
+            <p data-read>
+              Ten past six on a Monday. Somebody upstairs wanted her to stay home. She went in anyway. People like
+              Barbara always do. They think the truth is something you can carry out of a building in a cardboard box.
+            </p>
+            <div class="stain ash" style="left: 150px; top: 250px; width: 200px; height: 80px"></div>
+          </section>
+
+          <!-- 10 -->
+          <section class="page">
+            <div class="letterhead"><span>EVIDENCE 14 · CONTACT SHEET, ROLL 3</span><span>SOURCE: <span class="r">xxxxx</span></span></div>
+            <div class="contact">
+              <div class="frame" data-read="look" data-hold="1.4" style="background-image: url(photos/street.jpg); background-position: 50% 30%"><span>14-A</span></div>
+              <div class="frame" data-read="look" data-hold="1.4" style="background-image: url(photos/bookstore.jpg); background-position: 50% 25%"><span>14-B</span></div>
+              <div class="frame" data-read="look" data-hold="1.2" style="background-image: url(photos/bookstore.jpg); background-position: 90% 58%; background-size: 230%; filter: grayscale(1) contrast(1.3) brightness(0.8) blur(0.6px)">
+                <span>14-C</span>
+              </div>
+              <div class="frame" data-read="look" data-hold="2.2" style="background-image: url(photos/street.jpg); background-position: 88% 48%; background-size: 260%; filter: grayscale(1) contrast(1.4) brightness(0.85) blur(0.8px)">
+                <span>14-D</span><div class="circled"></div>
+              </div>
+            </div>
+            <p data-read class="pencil">not company photos. long lens. from across the street.</p>
+            <p data-read>
+              Somebody had been watching her for weeks. Fourth Street at lunch. The paperback rack at Crown Books,
+              where she read the same page three times. In 14-A she's looking back over her shoulder, straight down
+              the lens. She knew. Look at 14-D: the man walking away. He's in every roll.
+            </p>
+          </section>
+
+          <!-- 11 -->
+          <section class="page">
+            <div class="letterhead"><span>INTERNAL MEMORANDUM</span><span>11/05/97</span></div>
+            <p data-read>TO: ALL INFORMATION SYSTEMS STAFF<br />FROM: <span class="r">xxxxxxx xxxx</span>, VP <span class="r">xxxxxxxxxx</span></p>
+            <p data-read>
+              Effective immediately, <span class="r">xxxxxxxx xx xxxxxxxx</span> is no longer with the company. All
+              <span class="r">xxxxxxx</span> related to her <span class="r">xxxxxxxxxx</span> are to be returned to
+              <span class="r">xxxxxx xxxx</span> by end of day.
+            </p>
+            <p data-read>
+              Do not <span class="r">xxxxxxxx</span> this matter with <span class="r">xxxxxxxx</span>,
+              <span class="r">xx xxx xxxxx</span>. Backup tapes from the evening of 11/03 have been
+              <span class="r">xxxxxxxxxx</span> and will be <span class="r">xxxxxxxxxxxx</span>.
+              <span class="r">xxxx xxxxxxx xxxxxxxxxx xxx xxxxxxx xx xxxx.</span>
+            </p>
+            <p data-read>Thank you for your discretion. Remember: People. Information. Together.™</p>
+            <div class="stamp" style="left: 60px; bottom: 120px; font-size: 22px">DESTROY AFTER READING</div>
+            <div class="stain spill" style="right: -30px; top: 60px; width: 240px; height: 240px"></div>
+          </section>
+
+          <!-- 12 -->
+          <section class="page">
+            <div class="letterhead"><span>FIELD NOTES — DET. <span class="r">xxxxxxxx</span></span><span>II.</span></div>
+            <p data-read>
+              I went back for the floppy the second night. It was still taped under the drawer. It was blank. Not
+              erased. Blank, like it had never held anything at all. Somebody had been in that drawer before me, and
+              they wanted me to know it.
+            </p>
+            <p data-read>
+              That's when I understood. Nakamura didn't run. She didn't jump. She was deleted, the way you delete a
+              mailbox: quietly, after hours, with a timestamp nobody was ever meant to read.
+            </p>
+            <p data-read>Nobody but me.</p>
+            <p data-read>
+              Somewhere in a basement there's a tape from the night of November third. A machine that remembers what
+              eleven hundred people were paid to forget. The coffee's gone cold. The ashtray's full. I'm going to find
+              it.
+            </p>
+            <p data-read data-speed="140" data-hold="3" class="pencil" style="font-size: 22px; margin-top: 30px">
+              CASE STATUS: open. do not return to archive.
+            </p>
+            <div class="stain" style="left: 250px; bottom: -60px; width: 230px; height: 230px"></div>
+          </section>
+        </div>
+
+        <div class="cover">
+          <div class="face front" data-look="2.4">
+            <div class="tab">NAKAMURA, B.K. — 0093-214</div>
+            <div class="label">
+              NORTHSYAR COMMUNICATIONS<br />
+              <strong>PERSONNEL FILE 0093-214</strong>
+              SUBJECT: NAKAMURA, B.K.<br />
+              CLASSIFICATION: <span class="r">xxxxxxxx</span><br />
+              DO NOT REMOVE FROM <span class="r">xxxxxxxxxx</span>
+            </div>
+            <div class="stamp" style="left: 120px; top: 360px">CONFIDENTIAL</div>
+            <div class="pencil">where is she?</div>
+            <div class="stain" style="right: 30px; bottom: 60px; width: 220px; height: 220px"></div>
+            <div class="stain burn" style="left: 70px; bottom: 110px; width: 50px; height: 50px"></div>
+          </div>
+          <div class="face back">
+            <div class="idphoto" data-intro>
+              <div class="clip"></div>
+              <img class="bw" src="nakamura.jpg" alt="Barbara K. Nakamura, employee ID photo" />
+              <div class="caption">ID photo · issued 09/14/93</div>
+            </div>
+            <div class="pencil">mailbox still full. nobody remembers her last day??</div>
+            <div class="contents">
+              CONTENTS: 14 ITEMS<br />
+              ITEMS 3, 9, 11 REMOVED<br />
+              BY: <span class="r">xxxxxxxxxxxx</span>
+            </div>
+            <div class="stain" style="left: 230px; top: 470px; width: 200px; height: 200px"></div>
+            <div class="stain ash" style="right: 40px; bottom: 170px; width: 150px; height: 60px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dark"></div>
+    <div class="light"></div>
+    <div class="glow"></div>
+
+    <canvas class="smoke"></canvas>
+    <div class="grain"></div>
+    <button class="sound" hidden>♪ SOUND: ON</button>
+    <div class="card">
+      <span>NORTHSYAR COMMUNICATIONS · PERSONNEL</span>
+      <strong>CASE 0093-214 · STATUS: OPEN</strong>
+    </div>
+    <div class="intro">
+      <span>NORTHSYAR COMMUNICATIONS · PERSONNEL</span>
+      <strong>CASE FILE 0093-214</strong>
+      <em>[ click to begin · sound on ]</em>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

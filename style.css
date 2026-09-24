@@ -1,0 +1,1194 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --fit: 1;
+  --ink: #2b2723;
+  --faded: #5c554b;
+  --paper: #d9d1bf;
+  --manila: #a8946a;
+  --red: #8c3b33;
+  --pencil: #3a3f52;
+  --ring: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='3' seed='3'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='12'/%3E%3C/filter%3E%3Cg filter='url(%23f)'%3E%3Ccircle cx='100' cy='100' r='80' fill='%237a4a22' fill-opacity='0.07'/%3E%3Ccircle cx='100' cy='100' r='80' fill='none' stroke='%236b3a17' stroke-opacity='0.5' stroke-width='4'/%3E%3Ccircle cx='100' cy='100' r='76' fill='none' stroke='%236b3a17' stroke-opacity='0.18' stroke-width='6'/%3E%3C/g%3E%3C/svg%3E");
+  --spill: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03' numOctaves='3' seed='8'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='26'/%3E%3C/filter%3E%3Cg filter='url(%23f)'%3E%3Cpath d='M60 40 C100 10 160 30 170 80 C180 130 150 170 100 165 C60 160 20 140 25 100 C28 70 40 55 60 40 Z' fill='%238a5a2b' fill-opacity='0.22' stroke='%235e3515' stroke-opacity='0.35' stroke-width='3'/%3E%3Ccircle cx='168' cy='160' r='9' fill='%238a5a2b' fill-opacity='0.25'/%3E%3Ccircle cx='182' cy='176' r='4' fill='%238a5a2b' fill-opacity='0.25'/%3E%3C/g%3E%3C/svg%3E");
+  --burn: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.08' numOctaves='2' seed='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='12'/%3E%3C/filter%3E%3Cg filter='url(%23f)'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23a0703a' fill-opacity='0.25'/%3E%3Ccircle cx='50' cy='50' r='28' fill='%236b3a17' fill-opacity='0.6'/%3E%3Ccircle cx='50' cy='50' r='17' fill='%23120a05'/%3E%3C/g%3E%3C/svg%3E");
+}
+[hidden] {
+  display: none !important;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background:
+    repeating-linear-gradient(92deg, rgba(255, 255, 255, 0.015) 0 2px, transparent 2px 9px),
+    #16120e;
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  cursor: none;
+  user-select: none;
+}
+
+/* Everything lives on a fixed-size desk that is scaled to fit the window. */
+.stage {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 1560px;
+  height: 960px;
+  transform: translate(-50%, -50%) scale(var(--fit));
+}
+.stain {
+  position: absolute;
+  pointer-events: none;
+  background: var(--ring) center / contain no-repeat;
+  mix-blend-mode: multiply;
+}
+.stain.spill {
+  background-image: var(--spill);
+}
+.stain.burn {
+  background-image: var(--burn);
+  mix-blend-mode: normal;
+}
+.stain.ash {
+  background: radial-gradient(ellipse, rgba(70, 70, 70, 0.35), transparent 70%);
+  filter: blur(3px);
+}
+.pencil {
+  font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--pencil);
+  opacity: 0.85;
+}
+.r {
+  background: var(--ink);
+  color: transparent;
+  text-shadow: none;
+  border-radius: 1px;
+}
+.stamp {
+  position: absolute;
+  padding: 2px 12px;
+  border: 3px solid var(--red);
+  color: var(--red);
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  transform: rotate(-12deg);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  text-shadow: none;
+  white-space: nowrap;
+}
+.bw {
+  filter: grayscale(1) contrast(1.15) brightness(0.95) sepia(0.12);
+}
+
+/* Desk clutter */
+.stack {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  width: 170px;
+  height: 240px;
+}
+.stack div {
+  position: absolute;
+  inset: 0;
+  padding: 10px;
+  background: #8f7c55;
+  border-radius: 3px;
+  font-size: 11px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+.stack div:nth-child(1) {
+  transform: rotate(-8deg) translate(-8px, 6px);
+  background: #7d6b48;
+}
+.stack div:nth-child(2) {
+  transform: rotate(4deg) translate(6px, -4px);
+}
+.stack div:nth-child(3) {
+  transform: rotate(-2deg);
+  background: #a08c63;
+}
+/* The folder: a front cover that swings open over the left half, and a stack of top-bound pages on the right. */
+.folder {
+  position: absolute;
+  left: 180px;
+  top: 85px;
+  width: 1200px;
+  height: 790px;
+  perspective: 2600px;
+  transform: translateX(-300px) rotate(-1.4deg);
+}
+.base {
+  position: absolute;
+  left: 600px;
+  top: 0;
+  width: 600px;
+  height: 790px;
+  background: linear-gradient(160deg, #9d895f, #917d55);
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.7);
+}
+.cover {
+  position: absolute;
+  left: 600px;
+  top: 0;
+  width: 600px;
+  height: 790px;
+  z-index: 50;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+}
+.face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: linear-gradient(160deg, #b09c72, var(--manila) 50%, #97835b);
+  border-radius: 0 4px 4px 0;
+}
+.front {
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+}
+.back {
+  transform: rotateY(180deg);
+  border-radius: 4px 0 0 4px;
+  padding: 50px 44px;
+}
+.tab {
+  position: absolute;
+  top: -30px;
+  right: 40px;
+  padding: 7px 22px 6px;
+  background: #b09c72;
+  border-radius: 5px 5px 0 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+.label {
+  position: absolute;
+  left: 110px;
+  top: 150px;
+  width: 380px;
+  padding: 18px 22px;
+  background: #e6dfcf;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  transform: rotate(-1deg);
+}
+.label strong {
+  display: block;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+}
+.front .pencil {
+  position: absolute;
+  left: 150px;
+  top: 420px;
+  font-size: 26px;
+  transform: rotate(-6deg);
+}
+.idphoto {
+  position: relative;
+  width: fit-content;
+  padding: 8px;
+  background: #e3dccb;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+  transform: rotate(2deg);
+}
+.idphoto img {
+  display: block;
+  width: 250px;
+  aspect-ratio: 418 / 534;
+  object-fit: cover;
+}
+.idphoto .caption {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--faded);
+}
+.clip {
+  position: absolute;
+  top: -16px;
+  left: 34px;
+  width: 22px;
+  height: 60px;
+  border: 3px solid #8d8d88;
+  border-radius: 11px;
+  z-index: 1;
+}
+.contents {
+  position: absolute;
+  left: 44px;
+  bottom: 60px;
+  width: 300px;
+  padding: 14px 16px;
+  background: #e6dfcf;
+  font-size: 12px;
+  line-height: 1.6;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+.back .pencil {
+  position: absolute;
+  right: 40px;
+  top: 150px;
+  width: 170px;
+  transform: rotate(-5deg);
+}
+
+.fastener {
+  position: absolute;
+  left: 870px;
+  top: 12px;
+  width: 60px;
+  height: 22px;
+  z-index: 49;
+  border-radius: 3px;
+  background: linear-gradient(#b8b6ae, #7e7c75);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+.pages {
+  position: absolute;
+  left: 620px;
+  top: 22px;
+  width: 560px;
+  height: 746px;
+  perspective: 1600px;
+}
+.page {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  padding: 52px 46px 40px;
+  background:
+    linear-gradient(transparent 96%, rgba(0, 0, 0, 0.035) 96%) 0 0 / 100% 24px,
+    var(--paper);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  line-height: 1.6;
+  text-shadow: 0 0 0.6px rgba(40, 35, 30, 0.6);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.page::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.12) 50%, #c9c0ab 55%, #e0d9c8);
+}
+.letterhead {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--faded);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--faded);
+}
+.page h1 {
+  margin: 20px 0 22px;
+  font-size: 38px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.page h2 {
+  margin: 0 0 16px;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+}
+.page p {
+  margin: 0 0 14px;
+}
+.page dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 18px;
+  margin: 0 0 22px;
+}
+.page dt {
+  color: var(--faded);
+}
+.page dd {
+  margin: 0;
+}
+
+.printout {
+  padding: 46px 52px 40px;
+  background:
+    radial-gradient(circle at 14px 12px, #917d55 5px, transparent 6px) 0 0 / 100% 24px repeat-y,
+    radial-gradient(circle at calc(100% - 14px) 12px, #917d55 5px, transparent 6px) 0 0 / 100% 24px repeat-y,
+    repeating-linear-gradient(#c7cdb6 0 48px, #d9d5c3 48px 96px);
+  font-size: 12px;
+}
+.printout pre {
+  margin: 0 0 18px;
+  font: inherit;
+  line-height: 24px;
+  white-space: pre;
+}
+
+.news {
+  background: #ddd5c2;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.masthead {
+  text-align: center;
+  border-bottom: 3px double var(--ink);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+}
+.masthead strong {
+  display: block;
+  font-size: 34px;
+  letter-spacing: 0.04em;
+}
+.masthead span {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+.news h1 {
+  margin: 0 0 12px;
+  font-size: 27px;
+  text-align: center;
+}
+.news .columns {
+  columns: 2;
+  column-gap: 22px;
+  text-align: justify;
+}
+.halftone {
+  position: relative;
+  float: left;
+  width: 150px;
+  margin: 2px 14px 8px 0;
+}
+.halftone div {
+  height: 190px;
+  background: url(nakamura.jpg) 50% 30% / cover;
+  filter: grayscale(1) contrast(1.4) brightness(1.05);
+}
+.halftone::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 22px;
+  background: radial-gradient(circle, transparent 38%, rgba(20, 15, 10, 0.35) 42%) 0 0 / 4px 4px;
+  mix-blend-mode: multiply;
+}
+.halftone small {
+  display: block;
+  margin-top: 4px;
+  font-style: italic;
+  font-size: 11px;
+}
+
+.form {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 18px;
+  font-size: 12px;
+}
+.form td {
+  padding: 4px 6px;
+  border: 1px solid rgba(60, 50, 40, 0.5);
+}
+.form td:not(:first-child) {
+  width: 64px;
+  text-align: center;
+}
+
+.stills {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 6px 0 18px;
+}
+.cam {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #0d0d0d;
+}
+.cam .feed {
+  position: absolute;
+  inset: 0;
+  background: url(nakamura.jpg) 50% 22% / 140%;
+  filter: grayscale(1) contrast(1.8) brightness(0.55) blur(0.8px);
+}
+.cam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(0, 0, 0, 0.35) 0 1px, transparent 1px 3px);
+}
+.cam .ts {
+  position: absolute;
+  left: 5px;
+  bottom: 4px;
+  z-index: 1;
+  color: #e8e8e8;
+  font-size: 9px;
+  text-shadow: none;
+}
+.cam .blackout {
+  position: absolute;
+  left: 30%;
+  top: 14%;
+  width: 34%;
+  height: 72%;
+  z-index: 1;
+  background: #000;
+}
+.cam.static {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='1'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+    center / cover;
+}
+.cam.static .ts {
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  background: #000;
+  padding: 1px 4px;
+}
+
+.slip {
+  position: relative;
+  margin: 4px auto 20px;
+  width: 380px;
+  padding: 14px 18px 16px;
+  background: #d4a9a6;
+  font-size: 12px;
+  line-height: 1.7;
+  transform: rotate(-2.5deg);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  -webkit-mask: radial-gradient(circle at 96% 92%, transparent 34px, #000 36px);
+  mask: radial-gradient(circle at 96% 92%, transparent 34px, #000 36px);
+}
+.slip strong {
+  display: block;
+  text-align: center;
+  font: bold 18px Georgia, serif;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 8px;
+}
+.slip .said {
+  font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
+  font-size: 16px;
+  color: #1f2a4a;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 4px 0 18px;
+  padding: 14px;
+  background: #111;
+}
+.frame {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  background: url(nakamura.jpg) 50% 40% / cover;
+  filter: grayscale(1) contrast(1.25) brightness(0.9);
+}
+.frame span {
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  color: #d9a24a;
+  font-size: 10px;
+  text-shadow: none;
+}
+.circled {
+  position: absolute;
+  inset: -8px -10px;
+  border: 3px solid rgba(214, 120, 40, 0.8);
+  border-radius: 50%;
+  transform: rotate(-4deg);
+}
+
+/* Desk items */
+.item {
+  position: absolute;
+  overflow: visible;
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.6));
+}
+.d-mug {
+  left: 10px;
+  top: 620px;
+  width: 200px;
+  height: 170px;
+}
+.d-ashtray,
+.d-smoke {
+  left: 1360px;
+  top: 30px;
+  width: 200px;
+  height: 200px;
+}
+.d-smoke {
+  filter: none;
+  pointer-events: none;
+  z-index: 2;
+}
+.d-smoke path {
+  stroke-dasharray: 70 50;
+  animation: drift 7s linear infinite;
+}
+.d-smoke path:nth-child(2) {
+  animation-duration: 9s;
+}
+.d-smoke path:nth-child(3) {
+  animation-duration: 12s;
+}
+@keyframes drift {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+.ember-glow {
+  animation: ember 2.6s ease-in-out infinite alternate;
+}
+@keyframes ember {
+  to {
+    opacity: 0.75;
+  }
+}
+.d-pack {
+  left: 1420px;
+  top: 270px;
+  width: 110px;
+  height: 170px;
+  transform: rotate(14deg);
+}
+.d-lighter {
+  left: 1380px;
+  top: 470px;
+  width: 44px;
+  height: 72px;
+  transform: rotate(-12deg);
+}
+.d-matches {
+  left: 1440px;
+  top: 560px;
+  width: 84px;
+  height: 52px;
+  transform: rotate(18deg);
+}
+.d-floppy {
+  left: 1420px;
+  top: 690px;
+  width: 90px;
+  height: 94px;
+  transform: rotate(-9deg);
+}
+
+/* Top-bound page leaves: the front is the page, the back is plain paper. */
+.leaf {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+}
+.leaf-back {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent 96%, rgba(0, 0, 0, 0.03) 96%) 0 0 / 100% 24px,
+    #cdc4af;
+  transform: rotateX(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.smoke {
+  position: fixed;
+  inset: 0;
+  z-index: 11;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.92;
+}
+.flare {
+  opacity: 0;
+  transition: opacity 1.4s ease-in;
+}
+.drawing ~ .flare,
+.d-ashtray.drawing .flare {
+  opacity: 0.95;
+}
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(170deg, rgba(40, 28, 16, 0) 25%, rgba(40, 28, 16, 0.9));
+  opacity: var(--shade, 0);
+}
+
+/* Flashlight: a warm hotspot with a faint ring, a wide dim spill, then darkness. */
+.dark,
+.light,
+.glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+.dark {
+  z-index: 10;
+  background: rgba(5, 4, 3, 0.9);
+  -webkit-backdrop-filter: saturate(0.35);
+  backdrop-filter: saturate(0.35);
+  --beam: radial-gradient(
+    var(--rx, 360px) var(--ry, 400px) at var(--sx, 50vw) var(--sy, 50vh),
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.02) 30%,
+    rgba(0, 0, 0, 0.1) 38%,
+    rgba(0, 0, 0, 0.3) 43%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0.78) 80%,
+    #000 100%
+  );
+  -webkit-mask: var(--beam);
+  mask: var(--beam);
+}
+.light {
+  z-index: 11;
+  mix-blend-mode: soft-light;
+  background: radial-gradient(
+    var(--rx, 360px) var(--ry, 400px) at var(--sx, 50vw) var(--sy, 50vh),
+    rgba(255, 228, 180, 0.6) 0%,
+    rgba(255, 222, 170, 0.45) 25%,
+    rgba(255, 234, 195, 0.55) 38%,
+    rgba(255, 210, 150, 0.16) 44%,
+    rgba(255, 200, 140, 0.05) 70%,
+    transparent 100%
+  );
+}
+.glow {
+  z-index: 11;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    var(--rx, 360px) var(--ry, 400px) at var(--sx, 50vw) var(--sy, 50vh),
+    rgba(255, 214, 160, 0.07) 0%,
+    rgba(255, 200, 140, 0.03) 30%,
+    transparent 45%
+  );
+}
+
+/* Overlays */
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0.08;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.6s steps(3) infinite;
+}
+@keyframes grain {
+  33% {
+    transform: translate(-3%, 2%);
+  }
+  66% {
+    transform: translate(2%, -3%);
+  }
+}
+.sound {
+  position: fixed;
+  right: 22px;
+  bottom: 18px;
+  z-index: 15;
+  padding: 6px 10px;
+  border: 1px solid #4a4238;
+  background: none;
+  color: #8a7f6d;
+  font: 11px "Courier New", Courier, monospace;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}
+.card,
+.intro {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 14px;
+  text-align: center;
+  background: #070605;
+  color: #9a8e7a;
+  letter-spacing: 0.2em;
+}
+.card {
+  z-index: 18;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s;
+}
+.card.show {
+  opacity: 1;
+}
+.intro {
+  z-index: 20;
+  cursor: pointer;
+  transition: opacity 2.5s;
+}
+.card strong,
+.intro strong {
+  font-size: 22px;
+  color: #c9bda6;
+}
+.intro em {
+  margin-top: 30px;
+  font-style: normal;
+  font-size: 12px;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.intro.gone {
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grain,
+  .intro em,
+  .d-smoke path {
+    animation: none;
+  }
+}
+
+/* Composite surveillance photos: a drawn scene, her cut out of the ID photo, and a foreground that hides the seam. */
+.shot {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 400 / 230;
+  background: #222;
+  filter: grayscale(1) contrast(1.18) brightness(0.95);
+  box-shadow: 0 0 0 6px #e8e2d4, 0 3px 10px 6px rgba(0, 0, 0, 0.3);
+}
+.shot > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.55) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+.her {
+  position: absolute;
+  z-index: 1;
+  aspect-ratio: 418 / 534;
+  background: url(nakamura.jpg) center / cover;
+  -webkit-mask:
+    radial-gradient(ellipse 46% 42% at 54% 40%, #000 85%, transparent 100%),
+    radial-gradient(ellipse 70% 42% at 50% 100%, #000 80%, transparent 100%);
+  mask:
+    radial-gradient(ellipse 46% 42% at 54% 40%, #000 85%, transparent 100%),
+    radial-gradient(ellipse 70% 42% at 50% 100%, #000 80%, transparent 100%);
+}
+.shot .ts {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  z-index: 4;
+  color: #f0a64a;
+  font-size: 10px;
+  text-shadow: none;
+}
+.shot-caption {
+  margin: 12px 0 16px;
+  font-size: 11px;
+  color: var(--faded);
+}
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 4px;
+}
+.code {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  background: #cfd3bf;
+  font: 11px/1.45 "Courier New", Courier, monospace;
+  white-space: pre;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Evidence box on the desk */
+.d-evidence {
+  left: 4px;
+  top: 318px;
+  width: 168px;
+  height: 214px;
+  transform: rotate(-3deg);
+}
+.d-ashtray,
+.d-pack,
+.d-mug,
+.d-evidence {
+  cursor: pointer;
+}
+
+/* Evidence viewer */
+.evidence {
+  position: fixed;
+  inset: 0;
+  z-index: 17;
+  display: grid;
+  place-items: center;
+  cursor: default;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 48%, rgba(255, 226, 180, 0.13), transparent 70%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 5px),
+    #0c0a08;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s;
+}
+.evidence.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.evidence .inner {
+  position: relative;
+  width: 1100px;
+  height: 720px;
+  transform: scale(var(--fit));
+}
+.evidence header {
+  display: flex;
+  justify-content: space-between;
+  color: #9a8e7a;
+  letter-spacing: 0.2em;
+  font-size: 12px;
+}
+.evidence button {
+  padding: 6px 12px;
+  border: 1px solid #4a4238;
+  background: none;
+  color: #b0a48e;
+  font: 11px "Courier New", Courier, monospace;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}
+.evidence button:hover {
+  color: #e6dac2;
+  border-color: #8a7f6d;
+}
+.tray {
+  position: absolute;
+  inset: 60px 0 0;
+}
+.bagged {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.3, 1), filter 0.35s;
+  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.6));
+}
+.bagged:hover {
+  transform: var(--r) translateY(-8px) scale(1.03);
+  filter: drop-shadow(0 22px 24px rgba(0, 0, 0, 0.65));
+}
+.bagged {
+  transform: var(--r);
+}
+.bagged .label {
+  position: static;
+  display: block;
+  width: auto;
+  margin-top: 10px;
+  padding: 6px 10px;
+  background: #e6dfcf;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  transform: none;
+}
+.bag {
+  position: relative;
+  padding: 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 14px solid rgba(160, 40, 36, 0.85);
+  border-radius: 3px;
+}
+.bag::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.18) 38%, transparent 46%);
+  pointer-events: none;
+}
+
+.ccard {
+  position: relative;
+  width: 340px;
+  height: 214px;
+  padding: 22px 24px;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.12), transparent 40%),
+    linear-gradient(135deg, #3f5a4b, #20342b 60%, #152219);
+  color: #d9d6c8;
+  font-family: "OCR A Std", "Courier New", monospace;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.15);
+}
+.ccard .brand {
+  font: bold 13px Georgia, serif;
+  letter-spacing: 0.16em;
+}
+.ccard .brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  opacity: 0.7;
+}
+.ccard .chip {
+  width: 44px;
+  height: 34px;
+  margin: 20px 0 14px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #e8cf87, #a88236 50%, #d9bb6c);
+  box-shadow: inset 0 0 0 1px rgba(80, 55, 10, 0.5);
+}
+.ccard .num {
+  font-size: 20px;
+  letter-spacing: 0.12em;
+}
+.ccard .who {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+.ccard .holo {
+  position: absolute;
+  right: 22px;
+  top: 64px;
+  width: 50px;
+  height: 36px;
+  border-radius: 4px;
+  background: conic-gradient(from 30deg, #b8c7d9, #e7d3e8, #c9e6d7, #efe2b8, #b8c7d9);
+  opacity: 0.55;
+}
+.ccard .r {
+  background: #0c140f;
+}
+
+.earring {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #fff6cf 0, #f2d88c 12%, transparent 30%),
+    radial-gradient(circle at 50% 50%, #d9b25a 0, #b0852f 55%, #6e4f17 100%);
+  box-shadow: inset -4px -6px 10px rgba(60, 35, 5, 0.6), inset 3px 3px 6px rgba(255, 240, 190, 0.5);
+}
+.earring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.06) 0 2px, transparent 2px 5px);
+}
+
+.note {
+  position: absolute;
+  font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
+  color: #1f2a4a;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.45);
+}
+.note.meridian {
+  width: 250px;
+  padding: 58px 22px 26px;
+  background: linear-gradient(transparent 96%, rgba(40, 60, 120, 0.15) 96%) 0 58px / 100% 26px, #efe9dc;
+  font-size: 19px;
+  line-height: 26px;
+}
+.note.meridian::before {
+  content: "HOTEL MERIDIAN";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 16px;
+  text-align: center;
+  font: 14px Georgia, serif;
+  letter-spacing: 0.3em;
+  color: #6b4d2a;
+}
+.note.index {
+  width: 300px;
+  padding: 30px 20px 20px;
+  background: linear-gradient(#c05050 0 1px, transparent 1px) 0 26px / 100% 100% no-repeat,
+    linear-gradient(transparent 95%, rgba(60, 100, 170, 0.35) 95%) 0 30px / 100% 24px, #f3efe4;
+  font: 13px/24px "Courier New", Courier, monospace;
+  color: #222;
+}
+.note.napkin {
+  width: 250px;
+  height: 250px;
+  padding: 60px 26px;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.025) 0 1px, transparent 1px 4px),
+    #e9e4da;
+  font-size: 20px;
+  line-height: 1.3;
+  clip-path: polygon(0 0, 100% 0, 100% 72%, 92% 78%, 96% 86%, 88% 92%, 90% 100%, 0 100%);
+}
+.note.napkin::before {
+  content: "The Blue Lantern";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 18px;
+  text-align: center;
+  font: italic 20px Georgia, serif;
+  color: #2d3f7a;
+}
+.note.postit {
+  width: 200px;
+  height: 200px;
+  padding: 26px 20px;
+  background: linear-gradient(170deg, #e8d86a, #d8c653);
+  font-size: 19px;
+  line-height: 1.3;
+  -webkit-mask: radial-gradient(circle at 100% 100%, transparent 26px, #000 30px);
+  mask: radial-gradient(circle at 100% 100%, transparent 26px, #000 30px);
+}
+.note.postit::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle at 100% 100%, transparent 26px, rgba(40, 20, 5, 0.85) 28px, rgba(120, 70, 20, 0.4) 34px, transparent 42px);
+}
+
+.inspect {
+  position: absolute;
+  inset: 60px 0 0;
+  display: none;
+  grid-template-columns: 1fr 380px;
+  gap: 50px;
+  align-items: center;
+}
+.evidence.inspecting .inspect {
+  display: grid;
+}
+.evidence.inspecting .tray {
+  display: none;
+}
+.inspect .stagebox {
+  position: relative;
+  height: 600px;
+  display: grid;
+  place-items: center;
+}
+.inspect .stagebox > * {
+  position: relative;
+  animation: lift 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+@keyframes lift {
+  from {
+    transform: translateY(30px) scale(0.94);
+    opacity: 0;
+  }
+}
+.inspect aside {
+  color: #b9ad97;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.inspect aside h3 {
+  margin: 0 0 14px;
+  color: #e3d7bf;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+}
+.inspect aside .pencil {
+  color: #c2b9a4;
+  font-size: 18px;
+}
+.inspect nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 26px;
+}
+.statement {
+  width: 520px;
+  margin-top: 24px;
+  padding: 18px 20px;
+  background: #e7e1d2;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.8;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transform: rotate(1.5deg);
+}
+.statement div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.statement .hl {
+  background: rgba(230, 200, 60, 0.45);
+}
+
+/* The folder's own box is larger than its visible parts; only the paper should catch clicks. */
+.folder {
+  pointer-events: none;
+}
+.folder .base,
+.folder .cover,
+.folder .pages {
+  pointer-events: auto;
+}
