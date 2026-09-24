@@ -7,7 +7,80 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <svg class="room" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="rm-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1a15" /><stop offset=".6" stop-color="#262017" /><stop offset="1" stop-color="#15120d" /></linearGradient>
+        <pattern id="rm-paper" width="46" height="46" patternUnits="userSpaceOnUse">
+          <rect width="46" height="46" fill="url(#rm-wall)" />
+          <rect x="0" width="2" height="46" fill="#000" opacity=".18" />
+          <path d="M23 8 l5 7 l-5 7 l-5 -7 z" fill="#3a3020" opacity=".25" />
+        </pattern>
+        <linearGradient id="rm-wood" x1="0" x2="1"><stop offset="0" stop-color="#2a1f15" /><stop offset=".5" stop-color="#3a2b1d" /><stop offset="1" stop-color="#231a11" /></linearGradient>
+        <linearGradient id="rm-metal" x1="0" x2="1"><stop offset="0" stop-color="#2c302b" /><stop offset=".4" stop-color="#454a43" /><stop offset="1" stop-color="#22251f" /></linearGradient>
+        <radialGradient id="rm-brass"><stop offset="0" stop-color="#e2c27a" /><stop offset="1" stop-color="#6d5220" /></radialGradient>
+      </defs>
+      <rect width="1600" height="1000" fill="url(#rm-paper)" />
+      <rect y="620" width="1600" height="300" fill="#1a140e" />
+      <path d="M0 620 H1600" stroke="#3a2c1d" stroke-width="6" />
+      <rect y="920" width="1600" height="80" fill="#0e0b08" />
+
+      <!-- door, seen from inside: the lettering reads backwards -->
+      <rect x="22" y="12" width="324" height="990" fill="#120d09" />
+      <rect x="36" y="24" width="296" height="980" fill="url(#rm-wood)" />
+      <rect x="62" y="64" width="244" height="370" fill="#403c34" stroke="#1b140d" stroke-width="10" />
+      <rect x="62" y="64" width="244" height="370" fill="#8d8674" opacity=".25" />
+      <g transform="matrix(-1 0 0 1 368 0)" fill="#b8a066" font-family="Georgia, serif" text-anchor="middle">
+        <text x="184" y="190" font-size="30" letter-spacing="4">ALAN RICE</text>
+        <text x="184" y="222" font-size="13" letter-spacing="3.5">PRIVATE INVESTIGATIONS</text>
+        <text x="184" y="252" font-size="11" letter-spacing="3">— ROOM 404 —</text>
+      </g>
+      <rect x="72" y="480" width="224" height="200" fill="none" stroke="#1d150e" stroke-width="6" />
+      <rect x="72" y="720" width="224" height="220" fill="none" stroke="#1d150e" stroke-width="6" />
+      <circle cx="304" cy="580" r="13" fill="url(#rm-brass)" />
+
+      <!-- calendar -->
+      <g transform="rotate(-2 480 130)">
+        <rect x="428" y="62" width="112" height="140" fill="#b9b19c" />
+        <rect x="428" y="62" width="112" height="26" fill="#6e2622" />
+        <text x="484" y="81" font-size="13" text-anchor="middle" fill="#e6dccb" font-family="Georgia, serif" letter-spacing="2">NOV 1997</text>
+        <g fill="#3a342c" font-size="8" font-family="Arial, sans-serif">
+          <text x="440" y="106">S M T W T F S</text>
+          <text x="440" y="122">. . . . . . 1</text>
+          <text x="440" y="138">2 3 4 5 6 7 8</text>
+          <text x="440" y="154">9 10 11 12 13</text>
+        </g>
+        <ellipse cx="456" cy="135" rx="9" ry="7" fill="none" stroke="#8c1f1a" stroke-width="2" />
+      </g>
+
+      <!-- window frame (the view itself is on the light layer) -->
+      <rect x="586" y="18" width="428" height="262" fill="#1a130c" />
+      <rect x="600" y="30" width="400" height="236" fill="#07090d" />
+      <rect x="796" y="30" width="8" height="236" fill="#1a130c" />
+
+      <!-- wall clock, stopped at 11:47 -->
+      <circle cx="1190" cy="112" r="46" fill="#15110c" />
+      <circle cx="1190" cy="112" r="39" fill="#bcb39c" />
+      <g stroke="#2a241c" stroke-width="2">
+        <path d="M1190 77 v6 M1190 141 v6 M1155 112 h6 M1219 112 h6" />
+        <path d="M1190 112 L1184 89" stroke-width="3.5" stroke-linecap="round" />
+        <path d="M1190 112 L1168 100" stroke-width="2.5" stroke-linecap="round" />
+      </g>
+      <circle cx="1190" cy="112" r="3" fill="#2a241c" />
+
+      <!-- filing cabinet with a fedora on top -->
+      <rect x="1412" y="300" width="182" height="700" fill="url(#rm-metal)" />
+      <g stroke="#15170f" stroke-width="3" fill="none"><path d="M1412 470 H1594 M1412 640 H1594 M1412 810 H1594" /></g>
+      <rect x="1404" y="318" width="198" height="150" fill="url(#rm-metal)" stroke="#15170f" stroke-width="3" />
+      <g fill="#a08c63"><rect x="1428" y="306" width="46" height="16" /><rect x="1488" y="302" width="40" height="20" /><rect x="1538" y="308" width="44" height="14" /></g>
+      <g fill="#9e9a8e"><rect x="1478" y="380" width="46" height="10" rx="3" /><rect x="1478" y="540" width="46" height="10" rx="3" /><rect x="1478" y="710" width="46" height="10" rx="3" /><rect x="1478" y="880" width="46" height="10" rx="3" /></g>
+      <g fill="#cfc6b1"><rect x="1482" y="352" width="38" height="18" /><rect x="1482" y="512" width="38" height="18" /><rect x="1482" y="682" width="38" height="18" /></g>
+      <ellipse cx="1503" cy="298" rx="80" ry="14" fill="#141210" />
+      <path d="M1452 294 C1452 246 1470 236 1503 236 C1536 236 1554 246 1554 294 Z" fill="#1e1b17" />
+      <path d="M1454 280 H1552" stroke="#3a2a1a" stroke-width="10" />
+      <path d="M1478 244 Q1503 262 1528 244" stroke="#0d0c0a" stroke-width="4" fill="none" />
+    </svg>
     <div class="stage">
+      <div class="desktop"></div>
       <div class="stain" style="left: 150px; top: 560px; width: 190px; height: 190px"></div>
       <div class="stain ash" style="left: 1370px; top: 230px; width: 120px; height: 50px"></div>
 
@@ -16,7 +89,7 @@
         <div>FY97 SYNERGY AUDIT</div>
         <div>HR — MISC. <span class="r">xxxxxx</span></div>
       </div>
-      <svg class="item d-mug" data-look="1.4" viewBox="0 0 200 170">
+      <svg class="item d-mug hot" data-look="1.4" viewBox="0 0 200 170">
         <defs>
           <radialGradient id="mg-rim" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f3eee2" /><stop offset=".8" stop-color="#cfc7b5" /><stop offset="1" stop-color="#857e6f" /></radialGradient>
           <linearGradient id="mg-wall" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e0d9c9" /><stop offset=".5" stop-color="#a39c8c" /><stop offset="1" stop-color="#5e584d" /></linearGradient>
@@ -35,7 +108,7 @@
         <path d="M150,100 C151,110 148,118 152,126" stroke="#5a3a1c" stroke-width="3" opacity=".45" fill="none" stroke-linecap="round" />
       </svg>
 
-      <svg class="item d-ashtray" data-look="2.2" viewBox="0 0 200 200">
+      <svg class="item d-ashtray hot" data-look="2.2" viewBox="0 0 200 200">
         <defs>
           <radialGradient id="at-body" cx="40%" cy="34%" r="72%"><stop offset="0" stop-color="#8d857a" /><stop offset=".55" stop-color="#4a443d" /><stop offset=".9" stop-color="#231f1b" /><stop offset="1" stop-color="#141110" /></radialGradient>
           <radialGradient id="at-well" cx="50%" cy="42%" r="60%"><stop offset="0" stop-color="#36312c" /><stop offset=".8" stop-color="#1a1714" /><stop offset="1" stop-color="#0a0807" /></radialGradient>
@@ -114,7 +187,7 @@
         </g>
       </svg>
 
-      <svg class="item d-pack" data-look="1" viewBox="0 0 110 170">
+      <svg class="item d-pack hot" data-look="1" viewBox="0 0 110 170">
         <defs>
           <linearGradient id="pk-red" x1="0" x2="1"><stop offset="0" stop-color="#4d110f" /><stop offset=".18" stop-color="#7c1f1b" /><stop offset=".55" stop-color="#8a2520" /><stop offset=".85" stop-color="#6d1a16" /><stop offset="1" stop-color="#3d0d0b" /></linearGradient>
           <linearGradient id="pk-cream" x1="0" x2="1"><stop offset="0" stop-color="#b9b19d" /><stop offset=".2" stop-color="#ece5d3" /><stop offset=".6" stop-color="#f2ecdc" /><stop offset="1" stop-color="#aea691" /></linearGradient>
@@ -628,6 +701,64 @@ NORTHSYAR01 · GROUPWARE AUDIT TRAIL · 11/03/97
     </div>
 
     <div class="dark"></div>
+    <svg class="roomlight" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <filter id="rl-blur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="6" /></filter>
+        <linearGradient id="rl-fadeg" x1="0" y1="0" x2="0" y2="1"><stop offset=".05" stop-color="#fff" /><stop offset="1" stop-color="#000" /></linearGradient>
+        <mask id="rl-fade"><rect x="0" y="30" width="1600" height="680" fill="url(#rl-fadeg)" /></mask>
+        <clipPath id="rl-pane"><rect x="600" y="30" width="400" height="236" /></clipPath>
+        <linearGradient id="rl-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16202e" /><stop offset="1" stop-color="#2a3346" /></linearGradient>
+        <radialGradient id="rl-neon"><stop offset="0" stop-color="#ff5a4a" stop-opacity=".9" /><stop offset="1" stop-color="#ff5a4a" stop-opacity="0" /></radialGradient>
+        <radialGradient id="rl-hall" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#8a7650" /><stop offset="1" stop-color="#3a3020" /></radialGradient>
+        <radialGradient id="rl-moon" cx="50%" cy="15%" r="60%"><stop offset="0" stop-color="#5a6c90" stop-opacity=".22" /><stop offset="1" stop-color="#5a6c90" stop-opacity="0" /></radialGradient>
+        <pattern id="rl-blinds" width="400" height="17" patternUnits="userSpaceOnUse" x="600" y="30">
+          <rect width="400" height="10" fill="#000" />
+          <rect y="10" width="400" height="1" fill="#6a6456" />
+        </pattern>
+      </defs>
+      <rect width="1600" height="1000" fill="url(#rl-moon)" />
+
+      <!-- the city, through wet glass and blinds -->
+      <g clip-path="url(#rl-pane)">
+        <rect x="600" y="30" width="400" height="236" fill="url(#rl-sky)" opacity=".8" />
+        <path d="M600 266 V150 H640 V120 H690 V170 H730 V96 H790 V160 H830 V130 H880 V180 H920 V110 H960 V150 H1000 V266 Z" fill="#06080c" />
+        <g fill="#c9a86a" opacity=".45">
+          <rect x="650" y="132" width="6" height="8" /><rect x="668" y="150" width="6" height="8" /><rect x="742" y="112" width="6" height="8" />
+          <rect x="760" y="140" width="6" height="8" /><rect x="846" y="146" width="6" height="8" /><rect x="934" y="126" width="6" height="8" />
+          <rect x="772" y="190" width="6" height="8" /><rect x="700" y="200" width="6" height="8" />
+        </g>
+        <g class="neon">
+          <ellipse cx="968" cy="150" rx="60" ry="90" fill="url(#rl-neon)" opacity=".5" />
+          <text x="968" y="92" font-size="20" fill="#ff7a66" text-anchor="middle" font-family="Arial Black, sans-serif" writing-mode="tb" letter-spacing="2">HOTEL</text>
+        </g>
+        <g class="rain"></g>
+        <g class="drops"></g>
+        <rect class="flash-pane" x="600" y="30" width="400" height="236" fill="#dfe6ff" opacity="0" />
+        <rect x="600" y="30" width="400" height="236" fill="url(#rl-blinds)" />
+      </g>
+      <rect x="796" y="30" width="8" height="236" fill="#000" />
+
+      <!-- streetlight through the blinds, falling across the desk -->
+      <g class="shafts" fill="#8ea2c8" opacity=".035" filter="url(#rl-blur)" mask="url(#rl-fade)">
+        <path d="M604 40 L996 40 L870 150 L470 150 Z" />
+        <path d="M604 74 L996 74 L820 260 L420 260 Z" />
+        <path d="M604 108 L996 108 L770 370 L370 370 Z" />
+        <path d="M604 142 L996 142 L720 480 L320 480 Z" />
+        <path d="M604 176 L996 176 L670 590 L270 590 Z" />
+        <path d="M604 210 L996 210 L620 700 L220 700 Z" />
+      </g>
+
+      <!-- hallway light through the frosted door glass; lettering in silhouette -->
+      <rect x="62" y="64" width="244" height="370" fill="url(#rl-hall)" opacity=".38" />
+      <g transform="matrix(-1 0 0 1 368 0)" fill="#000" font-family="Georgia, serif" text-anchor="middle">
+        <text x="184" y="190" font-size="30" letter-spacing="4">ALAN RICE</text>
+        <text x="184" y="222" font-size="13" letter-spacing="3.5">PRIVATE INVESTIGATIONS</text>
+        <text x="184" y="252" font-size="11" letter-spacing="3">— ROOM 404 —</text>
+      </g>
+      <path d="M40 1000 L330 1000 L336 986 L34 986 Z" fill="#8a7650" opacity=".3" />
+
+      <rect class="flash" width="1600" height="1000" fill="#c8d2f0" opacity="0" />
+    </svg>
     <div class="light"></div>
     <div class="glow"></div>
 

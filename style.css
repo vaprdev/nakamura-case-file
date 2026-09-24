@@ -37,7 +37,7 @@ body {
 .stage {
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 62%;
   width: 1560px;
   height: 960px;
   transform: translate(-50%, -50%) scale(var(--fit));
@@ -659,7 +659,7 @@ body {
 }
 .dark {
   z-index: 10;
-  background: rgba(5, 4, 3, 0.9);
+  background: rgba(5, 4, 3, 0.86);
   -webkit-backdrop-filter: saturate(0.35);
   backdrop-filter: saturate(0.35);
   --beam: radial-gradient(
@@ -1191,4 +1191,105 @@ body {
 .folder .cover,
 .folder .pages {
   pointer-events: auto;
+}
+
+/* The office around the desk */
+.room,
+.roomlight {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.roomlight {
+  z-index: 11;
+  mix-blend-mode: screen;
+}
+.desktop {
+  position: absolute;
+  left: -70px;
+  right: -70px;
+  top: -40px;
+  bottom: -700px;
+  background:
+    repeating-linear-gradient(91deg, rgba(0, 0, 0, 0.12) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(89deg, rgba(255, 220, 170, 0.025) 0 3px, transparent 3px 23px),
+    linear-gradient(#3b2b1d, #2a1e14 30%, #1f160f);
+  border-top: 14px solid #4a3624;
+  box-shadow: 0 -2px 0 #6a4f35, 0 -40px 80px rgba(0, 0, 0, 0.7);
+}
+.rain line {
+  stroke: #b8c4dc;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.rain {
+  animation: rain 0.55s linear infinite;
+}
+@keyframes rain {
+  to {
+    transform: translate(-30px, 240px);
+  }
+}
+.drops circle {
+  fill: #c8d2e6;
+  opacity: 0.3;
+}
+.drops .slide {
+  animation: trickle 6s ease-in infinite;
+}
+@keyframes trickle {
+  0%,
+  40% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(160px);
+    opacity: 0;
+  }
+}
+.neon {
+  animation: neon 7s steps(1) infinite;
+}
+@keyframes neon {
+  0%, 61%, 63%, 70%, 100% {
+    opacity: 1;
+  }
+  62%, 69% {
+    opacity: 0.2;
+  }
+}
+
+/* Anything clickable gets the pointer and a warm glow on hover. */
+.hot {
+  cursor: pointer;
+}
+.item.hot {
+  transition: filter 0.25s;
+}
+.item.hot:hover {
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 14px rgba(255, 214, 160, 0.6)) brightness(1.18);
+}
+.page.hot,
+.face.front.hot {
+  transition: box-shadow 0.25s, filter 0.25s;
+}
+.page.hot:hover,
+.face.front.hot:hover {
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.35),
+    0 0 0 2px rgba(255, 214, 160, 0.55),
+    0 0 30px rgba(255, 214, 160, 0.35);
+  filter: brightness(1.06);
+}
+.page.hot:hover::after {
+  filter: brightness(1.25) drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.35));
+}
+@media (prefers-reduced-motion: reduce) {
+  .rain,
+  .drops .slide,
+  .neon {
+    animation: none;
+  }
 }

@@ -12,6 +12,7 @@ const pages = [...document.querySelectorAll(".page")]
 const sound = document.querySelector(".sound")
 const card = document.querySelector(".card")
 const intro = document.querySelector(".intro")
+const frontCover = document.querySelector(".face.front")
 const ashtray = document.querySelector(".d-ashtray")
 
 // Wrap each page in a leaf with a plain paper back so it can flip over the top binding.
@@ -45,6 +46,7 @@ let last = performance.now()
 
 function startDesk() {
   state = "closed"
+  frontCover.classList.add("hot")
   const look = (selector) => {
     const el = document.querySelector(selector)
     return glance(el, Number(el.dataset.look))
@@ -58,6 +60,7 @@ function startDesk() {
 async function openFolder() {
   if (state !== "closed") return
   state = "opening"
+  frontCover.classList.remove("hot")
   auto.running = false
   const r = cover.getBoundingClientRect()
   aim(r.right - 60 * fit, r.top + r.height * 0.6)
@@ -76,6 +79,7 @@ async function openFolder() {
 
 function readPage(first) {
   const page = pages[current]
+  if (current < pages.length - 1) page.classList.add("hot")
   const photo = first ? glance(document.querySelector("[data-intro]"), 2.5) : []
   const lines = [...page.querySelectorAll("[data-read]")].flatMap((el) =>
     el.dataset.read === "look" ? glance(el, Number(el.dataset.hold ?? 1.5)) : readLines(el),
@@ -91,6 +95,7 @@ async function turnPage() {
   auto.running = false
   if (current === pages.length - 1) return endCase()
   state = "turning"
+  pages[current].classList.remove("hot")
   const leaf = leaves[current]
   const page = pages[current]
   const below = pages[current + 1]
@@ -138,6 +143,7 @@ async function turnPage() {
 }
 
 function endCase() {
+  pages.forEach((page) => page.classList.remove("hot"))
   state = "ending"
   card.classList.add("show")
   setTimeout(() => {
@@ -408,7 +414,8 @@ function drawLight(now) {
 }
 
 function layout() {
-  fit = Math.min(innerWidth / 1560, innerHeight / 960)
+  // Pulled back so the office shows around the desk.
+  fit = Math.min(innerWidth / 1560, innerHeight / 960) * 0.7
   root.style.setProperty("--fit", String(fit))
   smokeCanvas.width = Math.ceil(innerWidth * SMOKE_RES)
   smokeCanvas.height = Math.ceil(innerHeight * SMOKE_RES)
@@ -454,8 +461,54 @@ intro.addEventListener("click", () => {
 })
 
 layout()
+fillWindow()
 setFolder(0)
 requestAnimationFrame(frame)
+
+// ---- The office: rain on the window and the occasional storm ----
+
+function fillWindow() {
+  const NS = "http://www.w3.org/2000/svg"
+  const rain = document.querySelector(".rain")
+  const drops = document.querySelector(".drops")
+  // Streaks tile every 240 units vertically so the falling animation loops seamlessly.
+  for (let i = 0; i < 90; i++) {
+    const x = 590 + Math.random() * 450
+    const y = Math.random() * 240
+    const len = 8 + Math.random() * 14
+    ;[y - 240, y].forEach((yy) => {
+      const line = document.createElementNS(NS, "line")
+      Object.entries({ x1: x, y1: yy, x2: x - len * 0.12, y2: yy + len }).forEach(([k, v]) => line.setAttribute(k, v))
+      rain.append(line)
+    })
+  }
+  for (let i = 0; i < 70; i++) {
+    const circle = document.createElementNS(NS, "circle")
+    Object.entries({ cx: 602 + Math.random() * 396, cy: 32 + Math.random() * 232, r: 0.8 + Math.random() * 2.2 }).forEach(([k, v]) =>
+      circle.setAttribute(k, v),
+    )
+    if (i % 9 === 0) {
+      circle.classList.add("slide")
+      circle.style.animationDelay = `${-Math.random() * 6}s`
+    }
+    drops.append(circle)
+  }
+}
+
+function lightning() {
+  const flash = document.querySelector(".flash")
+  const pane = document.querySelector(".flash-pane")
+  const pattern = [0.35, 0.05, 0.5, 0.12, 0]
+  pattern.forEach((level, i) =>
+    setTimeout(() => {
+      flash.setAttribute("opacity", String(level * 0.35))
+      pane.setAttribute("opacity", String(level))
+    }, i * 90 + (i > 1 ? 120 : 0)),
+  )
+  setTimeout(() => audio?.thunder(), 1200 + Math.random() * 1600)
+  setTimeout(lightning, 16000 + Math.random() * 26000)
+}
+setTimeout(lightning, 9000)
 
 // ---- Sound: generated paper and folder effects ----
 
@@ -554,6 +607,25 @@ function startAudio() {
       const t = ctx.currentTime
       rustle(t, 0.8, 500, 1600, 0.4)
       rustle(t + 0.8, 1.6, 1500, 450, 0.3)
+    },
+    // Distant thunder: low noise that rolls in, grumbles and fades.
+    thunder: () => {
+      const t = ctx.currentTime
+      const source = ctx.createBufferSource()
+      source.buffer = white
+      source.loop = true
+      source.playbackRate.value = 0.5
+      const low = filter("lowpass", 180)
+      low.Q.value = 0.7
+      const env = ctx.createGain()
+      env.gain.setValueAtTime(0.0001, t)
+      env.gain.linearRampToValueAtTime(0.5, t + 0.4)
+      env.gain.linearRampToValueAtTime(0.28, t + 1.1)
+      env.gain.linearRampToValueAtTime(0.42, t + 1.6)
+      env.gain.exponentialRampToValueAtTime(0.0001, t + 4.8)
+      source.connect(low).connect(env).connect(sfx)
+      source.start(t)
+      source.stop(t + 5)
     },
     inhale: () => {
       const t = ctx.currentTime
