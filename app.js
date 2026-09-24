@@ -401,7 +401,7 @@ function drawLight(now) {
 
 function layout() {
   const wide = Math.min(innerWidth / 1560, innerHeight / 960) * 0.55
-  fit = wide * (stage.classList.contains("closeup") ? 1.3 : 1)
+  fit = wide * (stage.classList.contains("closeup") ? 1.6 : 1)
   root.style.setProperty("--fit", String(wide))
   smokeCanvas.width = Math.ceil(innerWidth * SMOKE_RES)
   smokeCanvas.height = Math.ceil(innerHeight * SMOKE_RES)
