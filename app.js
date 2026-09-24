@@ -58,7 +58,7 @@ function startDesk() {
     return glance(el, Number(el.dataset.look))
   }
   run(
-    [".d-mug", ".d-burger", ".d-ashtray", ".front"].flatMap(look),
+    [".d-mug", ".d-donut", ".d-ashtray", ".front"].flatMap(look),
     openFolder,
   )
 }
@@ -222,11 +222,11 @@ let biting = false
 async function bite() {
   if (biting) return
   biting = true
-  const burger = document.querySelector(".d-burger")
-  burger.classList.add("bitten")
+  const donut = document.querySelector(".d-donut")
+  donut.classList.add("bitten")
   audio?.bite()
   await sleep(2.6)
-  burger.classList.remove("bitten")
+  donut.classList.remove("bitten")
   biting = false
 }
 
@@ -501,7 +501,7 @@ window.addEventListener("pointerdown", (event) => {
   if (event.target === sound || state === "intro") return
   if (event.target.closest(".d-ashtray")) return takeDrag()
   if (event.target.closest(".d-mug")) return sip()
-  if (event.target.closest(".d-burger")) return bite()
+  if (event.target.closest(".d-donut")) return bite()
   if (state === "closed" && event.target.closest(".folder")) return openFolder()
   if (state === "reading" && pages[current].contains(event.target)) turnPage()
 })
