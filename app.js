@@ -5,6 +5,7 @@ const SETTINGS = {
 }
 
 const root = document.documentElement
+const stage = document.querySelector(".stage")
 const folder = document.querySelector(".folder")
 const cover = document.querySelector(".cover")
 const pagesBox = document.querySelector(".pages")
@@ -62,6 +63,8 @@ async function openFolder() {
   state = "opening"
   frontCover.classList.remove("hot")
   auto.running = false
+  stage.classList.add("closeup")
+  layout()
   const r = cover.getBoundingClientRect()
   aim(r.right - 60 * fit, r.top + r.height * 0.6)
   audio?.touch()
@@ -150,6 +153,8 @@ function endCase() {
     leaves.forEach((leaf) => (leaf.style.transform = ""))
     pages.forEach((page) => page.style.removeProperty("--shade"))
     setFolder(0)
+    stage.classList.remove("closeup")
+    layout()
     spot.x = spot.tx = innerWidth / 2
     spot.y = spot.ty = innerHeight / 2
   }, 2500)
@@ -414,9 +419,9 @@ function drawLight(now) {
 }
 
 function layout() {
-  // Pulled back so the office shows around the desk.
-  fit = Math.min(innerWidth / 1560, innerHeight / 960) * 0.7
-  root.style.setProperty("--fit", String(fit))
+  const wide = Math.min(innerWidth / 1560, innerHeight / 960) * 0.55
+  fit = wide * (stage.classList.contains("closeup") ? 1.3 : 1)
+  root.style.setProperty("--fit", String(wide))
   smokeCanvas.width = Math.ceil(innerWidth * SMOKE_RES)
   smokeCanvas.height = Math.ceil(innerHeight * SMOKE_RES)
 }
