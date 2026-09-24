@@ -238,7 +238,7 @@ async function toggleTape() {
   document.querySelector(".d-cassette").classList.add("playing")
   audio.duck(true)
   await audio.playThrough("tape-start.mp3")
-  if (taping) await audio.playThrough("memo.mp3")
+  if (taping) await audio.playThrough("memo-clean.mp3")
   if (taping) stopTape()
 }
 

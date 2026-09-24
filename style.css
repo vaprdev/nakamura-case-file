@@ -3,6 +3,8 @@
 }
 :root {
   --fit: 1;
+  --magnify: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Cpath%20d%3D%22M22.5%2022.5%20L35%2035%22%20stroke%3D%22%231a1208%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M22.5%2022.5%20L35%2035%22%20stroke%3D%22%236b4a26%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M24%2024%20L33.5%2033.5%22%20stroke%3D%22%23a87c48%22%20stroke-width%3D%221.2%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2215%22%20r%3D%2210.5%22%20fill%3D%22rgba%28200%2C220%2C235%2C.18%29%22%20stroke%3D%22%231a1208%22%20stroke-width%3D%225%22/%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2215%22%20r%3D%2210.5%22%20fill%3D%22none%22%20stroke%3D%22%23c9a15a%22%20stroke-width%3D%222.6%22/%3E%3Cpath%20d%3D%22M9.5%2012%20A6.5%206.5%200%200%201%2014%208.3%22%20stroke%3D%22rgba%28255%2C255%2C255%2C.85%29%22%20stroke-width%3D%221.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E") 15 15, zoom-in;
+  --magnify-hot: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2215%22%20r%3D%2214%22%20fill%3D%22none%22%20stroke%3D%22rgba%28255%2C200%2C120%2C.55%29%22%20stroke-width%3D%223%22/%3E%3Cpath%20d%3D%22M22.5%2022.5%20L35%2035%22%20stroke%3D%22%231a1208%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M22.5%2022.5%20L35%2035%22%20stroke%3D%22%236b4a26%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M24%2024%20L33.5%2033.5%22%20stroke%3D%22%23a87c48%22%20stroke-width%3D%221.2%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2215%22%20r%3D%2210.5%22%20fill%3D%22rgba%28255%2C226%2C170%2C.38%29%22%20stroke%3D%22%231a1208%22%20stroke-width%3D%225%22/%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2215%22%20r%3D%2210.5%22%20fill%3D%22none%22%20stroke%3D%22%23c9a15a%22%20stroke-width%3D%222.6%22/%3E%3Cpath%20d%3D%22M9.5%2012%20A6.5%206.5%200%200%201%2014%208.3%22%20stroke%3D%22rgba%28255%2C255%2C255%2C.85%29%22%20stroke-width%3D%221.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E") 15 15, pointer;
   --ink: #2b2723;
   --faded: #5c554b;
   --paper: #d9d1bf;
@@ -29,7 +31,7 @@ body {
   color: var(--ink);
   font-family: "Courier New", Courier, monospace;
   font-size: 13px;
-  cursor: none;
+  cursor: var(--magnify);
   user-select: none;
 }
 
@@ -776,7 +778,7 @@ body {
 }
 .intro {
   z-index: 20;
-  cursor: pointer;
+  cursor: var(--magnify-hot);
   transition: opacity 2.5s;
 }
 .card strong,
@@ -894,7 +896,7 @@ body {
 .d-pack,
 .d-mug,
 .d-evidence {
-  cursor: pointer;
+  cursor: var(--magnify-hot);
 }
 
 /* Evidence viewer */
@@ -904,7 +906,7 @@ body {
   z-index: 17;
   display: grid;
   place-items: center;
-  cursor: default;
+  cursor: var(--magnify);
   background:
     radial-gradient(ellipse 60% 55% at 50% 48%, rgba(255, 226, 180, 0.13), transparent 70%),
     repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 5px),
@@ -976,7 +978,7 @@ body {
 }
 .bagged {
   position: absolute;
-  cursor: pointer;
+  cursor: var(--magnify-hot);
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.3, 1), filter 0.35s;
   filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.6));
 }
@@ -1292,7 +1294,7 @@ body {
 
 /* Anything clickable gets the pointer and a warm glow on hover. */
 .hot {
-  cursor: pointer;
+  cursor: var(--magnify-hot);
 }
 .item.hot {
   transition: filter 0.25s;
@@ -1498,7 +1500,7 @@ body {
 .exhibit .evidence-item {
   position: relative;
   margin: 0 auto;
-  cursor: pointer;
+  cursor: var(--magnify-hot);
   transition: filter 0.25s, box-shadow 0.25s;
 }
 .exhibit .evidence-item img {
@@ -1618,4 +1620,11 @@ body {
 }
 .d-cassette.playing {
   filter: drop-shadow(0 14px 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 16px rgba(255, 190, 120, 0.45)) saturate(0.7) brightness(0.85) sepia(0.15);
+}
+
+/* The page under an open folder still reads as "clickable" wherever it turns. */
+.page.hot,
+.face.front.hot,
+.item.hot {
+  cursor: var(--magnify-hot);
 }
