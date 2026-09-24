@@ -1335,3 +1335,26 @@ body {
   background: rgba(60, 45, 28, 0.9);
   color: #fff3dc;
 }
+
+.d-burger {
+  left: 1330px;
+  top: 300px;
+  width: 240px;
+  transform: rotate(-6deg);
+  filter: drop-shadow(0 14px 14px rgba(0, 0, 0, 0.65)) saturate(0.55) brightness(0.72) sepia(0.25);
+  transition: transform 0.15s;
+}
+.d-burger.hot:hover {
+  filter: drop-shadow(0 14px 14px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 14px rgba(255, 214, 160, 0.6)) saturate(0.7) brightness(0.9) sepia(0.2);
+}
+.d-burger.bitten {
+  animation: chomp 0.5s ease-in-out 3;
+}
+@keyframes chomp {
+  0%, 100% {
+    transform: rotate(-6deg) scale(1);
+  }
+  40% {
+    transform: rotate(-4deg) scale(0.94, 0.9);
+  }
+}
