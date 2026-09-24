@@ -541,14 +541,20 @@ body {
   filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.6));
 }
 .d-mug {
-  left: 10px;
-  top: 620px;
+  left: -60px;
+  top: 640px;
   width: 200px;
   height: 170px;
 }
-.d-ashtray,
+.d-ashtray {
+  left: 1410px;
+  top: 30px;
+  width: 240px;
+  height: auto;
+  filter: drop-shadow(0 12px 12px rgba(0, 0, 0, 0.55)) saturate(0.7) brightness(0.82) sepia(0.12);
+}
 .d-smoke {
-  left: 1360px;
+  left: 1440px;
   top: 30px;
   width: 200px;
   height: 200px;
@@ -1336,7 +1342,7 @@ body {
 
 .plate {
   position: absolute;
-  left: -20px;
+  left: -90px;
   top: 400px;
   width: 210px;
   height: 210px;
@@ -1344,7 +1350,7 @@ body {
   filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.65)) brightness(0.75) saturate(0.7);
 }
 .d-donut {
-  left: 18px;
+  left: -52px;
   top: 438px;
   width: 134px;
   transform: rotate(-6deg);
@@ -1433,9 +1439,9 @@ body {
 
 /* Photocopied typed report: flat grey-white stock, toner speckle, no ruled lines. */
 .page.copy {
-  padding: 44px 44px 36px;
-  font-size: 12.5px;
-  line-height: 1.5;
+  padding: 34px 34px 28px;
+  font-size: 15.5px;
+  line-height: 1.38;
   color: #262320;
   background:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='1' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)' opacity='.07'/%3E%3C/svg%3E"),
@@ -1448,14 +1454,14 @@ body {
   border-bottom-color: #8a857c;
 }
 .page.copy h2 {
-  margin: 18px 0 10px;
-  font-size: 12.5px;
+  margin: 14px 0 7px;
+  font-size: 15.5px;
   letter-spacing: 0.14em;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 .page.copy p {
-  margin: 0 0 9px;
+  margin: 0 0 7px;
 }
 .page.copy .fields,
 .page.copy .timeline {
@@ -1528,13 +1534,13 @@ body {
 /* Case cover: a typed cover sheet on the manila, one quiet stamp, one ballpoint line. */
 .coversheet {
   position: absolute;
-  left: 78px;
-  top: 118px;
-  width: 444px;
+  left: 50px;
+  top: 100px;
+  width: 500px;
   padding: 30px 32px 34px;
   background: #e9e5da;
   color: #262320;
-  font-size: 12.5px;
+  font-size: 15px;
   line-height: 1.55;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   text-shadow: 0 0 0.5px rgba(30, 28, 25, 0.7);
@@ -1542,7 +1548,7 @@ body {
 }
 .coversheet .org {
   letter-spacing: 0.12em;
-  font-size: 11.5px;
+  font-size: 14px;
   color: #3c3833;
 }
 .coversheet .kind {
@@ -1593,4 +1599,11 @@ body {
   opacity: 0.85;
   transform: rotate(-2.5deg);
   mix-blend-mode: multiply;
+}
+.page.copy .contd {
+  position: absolute;
+  right: 34px;
+  bottom: 26px;
+  color: #55504a;
+  font-size: 13px;
 }

@@ -54,68 +54,7 @@
         <path d="M150,100 C151,110 148,118 152,126" stroke="#5a3a1c" stroke-width="3" opacity=".45" fill="none" stroke-linecap="round" />
       </svg>
 
-      <svg class="item d-ashtray hot" data-look="2.2" viewBox="0 0 200 200">
-        <defs>
-          <radialGradient id="at-body" cx="40%" cy="34%" r="72%"><stop offset="0" stop-color="#8d857a" /><stop offset=".55" stop-color="#4a443d" /><stop offset=".9" stop-color="#231f1b" /><stop offset="1" stop-color="#141110" /></radialGradient>
-          <radialGradient id="at-well" cx="50%" cy="42%" r="60%"><stop offset="0" stop-color="#36312c" /><stop offset=".8" stop-color="#1a1714" /><stop offset="1" stop-color="#0a0807" /></radialGradient>
-          <linearGradient id="cig-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf8f0" /><stop offset=".35" stop-color="#ece6d8" /><stop offset=".8" stop-color="#bdb5a5" /><stop offset="1" stop-color="#8f887b" /></linearGradient>
-          <linearGradient id="cig-cork" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0c98f" /><stop offset=".4" stop-color="#d7a66a" /><stop offset=".85" stop-color="#9c6d3b" /><stop offset="1" stop-color="#6d4924" /></linearGradient>
-          <linearGradient id="cig-ash" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcd9d3" /><stop offset=".5" stop-color="#a5a19a" /><stop offset="1" stop-color="#5f5b55" /></linearGradient>
-          <linearGradient id="cig-char" x1="0" x2="1"><stop offset="0" stop-color="#2a1d12" /><stop offset=".5" stop-color="#6b5237" stop-opacity=".6" /><stop offset="1" stop-color="#6b5237" stop-opacity="0" /></linearGradient>
-          <radialGradient id="cig-ember"><stop offset="0" stop-color="#fff1b0" /><stop offset=".35" stop-color="#ff9a3c" /><stop offset=".75" stop-color="#c7361a" /><stop offset="1" stop-color="#5a1208" /></radialGradient>
-          <filter id="grit" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-            <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="3" seed="2" />
-            <feColorMatrix type="matrix" values="0.4 0.4 0.4 0 0.2  0.4 0.4 0.4 0 0.2  0.4 0.4 0.4 0 0.2  0 0 0 0 1" />
-            <feBlend in2="SourceGraphic" mode="multiply" />
-            <feComposite in2="SourceAlpha" operator="in" />
-          </filter>
-          <filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" /></filter>
-          <symbol id="butt" viewBox="0 0 60 12" width="60" height="12">
-            <rect x="24" y="1" width="35" height="10" rx="1.5" fill="url(#cig-cork)" filter="url(#grit)" />
-            <rect x="24" y="1" width="1.4" height="10" fill="#c9a24c" />
-            <rect x="7" y="1.3" width="18" height="9.4" fill="url(#cig-paper)" />
-            <rect x="7" y="1.3" width="9" height="9.4" fill="url(#cig-char)" />
-            <path d="M8,1.3 C5,2 3,3.4 4.2,5 C2.4,6.4 4,9 8,10.7 Z" fill="#2c2620" />
-            <path d="M13,1.4 l1.5,3 l-1,2.5 l1.8,3.6 M19,1.4 l-1,4 l1.2,5" stroke="rgba(90,80,70,.45)" stroke-width=".6" fill="none" />
-          </symbol>
-          <symbol id="cig" viewBox="0 0 150 14" width="150" height="14">
-            <rect x="112" y="1" width="37" height="12" rx="1.5" fill="url(#cig-cork)" filter="url(#grit)" />
-            <rect x="112" y="1" width="1.6" height="12" fill="#c9a24c" />
-            <rect x="115" y="1" width=".7" height="12" fill="#c9a24c" opacity=".7" />
-            <rect x="23" y="1.2" width="90" height="11.6" fill="url(#cig-paper)" />
-            <text x="96" y="9" font-size="4.4" fill="#8c2a24" font-family="Georgia, serif" font-style="italic">No.7</text>
-            <rect x="22" y="1.2" width="11" height="11.6" fill="url(#cig-char)" />
-            <rect x="3" y="1.7" width="19" height="10.6" rx="2.2" fill="url(#cig-ash)" filter="url(#grit)" />
-            <path d="M9,1.9 l.4,10.2 M15,1.9 l.8,10.2" stroke="rgba(60,55,50,.5)" stroke-width=".6" />
-            <ellipse class="ember-glow" cx="21" cy="7" rx="8" ry="9" fill="#ff7a2a" opacity=".4" filter="url(#glow)" />
-            <rect x="18.5" y="1.4" width="5" height="11.2" rx="1.6" fill="url(#cig-ember)" />
-          </symbol>
-        </defs>
-        <circle cx="100" cy="100" r="95" fill="url(#at-body)" />
-        <g fill="#0e0c0a">
-          <rect x="160" y="93" width="40" height="14" rx="7" transform="rotate(-25 100 100)" />
-          <rect x="160" y="93" width="40" height="14" rx="7" transform="rotate(95 100 100)" />
-          <rect x="160" y="93" width="40" height="14" rx="7" transform="rotate(215 100 100)" />
-        </g>
-        <path d="M24,62 A84,84 0 0 1 112,17" stroke="rgba(255,255,255,.4)" stroke-width="3" fill="none" stroke-linecap="round" />
-        <circle cx="100" cy="100" r="64" fill="url(#at-well)" />
-        <path d="M150,130 A62,62 0 0 1 70,156" stroke="rgba(255,255,255,.14)" stroke-width="2" fill="none" />
-        <g filter="url(#grit)">
-          <ellipse cx="96" cy="112" rx="34" ry="22" fill="#a9a49c" />
-          <ellipse cx="118" cy="96" rx="16" ry="11" fill="#8f8a83" />
-          <ellipse cx="80" cy="92" rx="12" ry="8" fill="#7b766f" />
-        </g>
-        <circle cx="70" cy="120" r="2" fill="#3a3632" />
-        <circle cx="124" cy="120" r="1.6" fill="#3a3632" />
-        <use href="#butt" transform="translate(58 122) rotate(18) scale(.95)" />
-        <use href="#butt" transform="translate(126 78) rotate(128) scale(.9)" />
-        <g transform="translate(92 140) rotate(-58) scale(.9)">
-          <use href="#butt" />
-          <path d="M50,1.2 C47,3 47,9 50,10.8 L56,10.8 C58,8 58,4 56,1.2 Z" fill="#8e1f2a" opacity=".6" />
-        </g>
-        <use id="ashtray-cig" href="#cig" transform="translate(100 100) rotate(-25) translate(-30 -7)" />
-        <circle class="flare" cx="92" cy="104" r="10" fill="#ff8a30" filter="url(#glow)" />
-      </svg>
+      <img class="item d-ashtray hot" data-look="2.2" src="ashtray.png" alt="Glass ashtray full of cigarette butts" />
       <svg class="item d-smoke" viewBox="0 0 200 200" aria-hidden="true">
         <defs>
           <filter id="smokef" x="-60%" y="-20%" width="220%" height="140%">
@@ -168,6 +107,11 @@
               contact with Northstar personnel since leaving the facility.
             </p>
             <p data-read>Her cellular telephone has not been recovered.</p>
+            <div class="contd">(continued)</div>
+          </section>
+
+          <section class="page copy">
+            <div class="letterhead"><span>NORTHSTAR COMMUNICATIONS — CORPORATE SECURITY</span><span>NC-96-1147/2</span></div>
             <h2 data-read>LAST CONFIRMED ACTIVITY</h2>
             <dl class="timeline">
               <dt data-read>6:11 PM</dt><dd data-read>Telephone call placed from office extension.</dd>
