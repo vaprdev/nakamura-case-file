@@ -622,6 +622,17 @@ body {
   transform-origin: top center;
   transform-style: preserve-3d;
 }
+.leaf.turning {
+  will-change: transform, clip-path;
+}
+.leaf.turning .page::after {
+  width: 54px;
+  height: 54px;
+}
+.leaf.turning .page::before {
+  background: linear-gradient(to bottom, transparent 70%, rgba(55, 39, 22, 0.35));
+  opacity: 0.45;
+}
 .leaf-back {
   position: absolute;
   inset: 0;

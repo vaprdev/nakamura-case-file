@@ -91,8 +91,7 @@ function readPage(first) {
   run([...photo, ...lines, { x: r.right - 40 * fit, y: r.bottom - 40 * fit, dur: 1 }], turnPage)
 }
 
-// A top-bound page: the corner peels up first, the sheet lifts over the binding with its free end
-// trailing, casts a shadow on the page beneath, then drops and settles with a small bounce.
+// Lift the corner and expose the sheet below without flipping the bright reverse side into view.
 async function turnPage() {
   if (state !== "reading") return
   auto.running = false
@@ -101,45 +100,23 @@ async function turnPage() {
   pages[current].classList.remove("hot")
   const leaf = leaves[current]
   const page = pages[current]
-  const below = pages[current + 1]
-  let angle = 0
-  let peel = 0
-  let lag = 0
-  const apply = () => {
-    const lift = Math.sin((Math.min(angle, 180) * Math.PI) / 180)
-    leaf.style.transform = `rotateX(${angle}deg) rotate3d(-0.35, 0.94, 0, ${-peel}deg) skewX(${lag}deg)`
-    page.style.setProperty("--shade", String(Math.min(0.55, lift * 0.35 + peel / 50)))
-    below.style.setProperty("--shade", String(Math.min(0.6, lift * 0.55 * (angle < 120 ? 1 : (180 - angle) / 60))))
-  }
+  leaf.classList.add("turning")
   const r = page.getBoundingClientRect()
   aim(r.right - 50 * fit, r.bottom - 60 * fit)
   audio?.touch()
-  await tween(0.7, (k) => {
-    peel = 16 * easeOut(k)
-    angle = 6 * easeOut(k)
-    apply()
+  await tween(0.5, (k) => {
+    const e = easeOut(k)
+    leaf.style.transform = `rotateX(${6 * e}deg) rotateY(${-4 * e}deg)`
   })
   audio?.page()
-  await tween(1.6, (k) => {
+  await tween(1.2, (k) => {
     const e = easeInOut(k)
-    angle = 6 + 144 * e
-    peel = 16 * (1 - Math.min(1, e * 1.8))
-    // The free end trails behind the bound edge on the way up, then catches up.
-    lag = Math.sin(e * Math.PI) * 4
-    apply()
-    aim(r.left + r.width * 0.55, r.top + r.height * (0.55 - 0.45 * Math.sin(e * Math.PI * 0.8)))
+    leaf.style.transform = `rotateX(${6 + 8 * e}deg) rotateY(${-4 - 2 * e}deg) translateY(${-14 * e}px)`
+    leaf.style.clipPath = `inset(0 0 ${100 * e}% 0)`
+    aim(r.left + r.width * (0.8 - 0.25 * e), r.top + r.height * (0.55 - 0.2 * e))
   })
-  await tween(0.45, (k) => {
-    angle = 150 + 34 * k * k
-    lag = 0
-    apply()
-  })
-  await tween(0.5, (k) => {
-    angle = 184 - 4 * easeOut(k) + Math.sin(k * Math.PI * 2) * 1.2 * (1 - k)
-    apply()
-  })
-  page.style.removeProperty("--shade")
-  below.style.removeProperty("--shade")
+  leaf.style.visibility = "hidden"
+  leaf.classList.remove("turning")
   current++
   state = "reading"
   readPage(false)
@@ -150,7 +127,11 @@ function endCase() {
   state = "ending"
   card.classList.add("show")
   setTimeout(() => {
-    leaves.forEach((leaf) => (leaf.style.transform = ""))
+    leaves.forEach((leaf) => {
+      leaf.style.transform = ""
+      leaf.style.clipPath = ""
+      leaf.style.visibility = ""
+    })
     pages.forEach((page) => page.style.removeProperty("--shade"))
     setFolder(0)
     stage.classList.remove("closeup")
