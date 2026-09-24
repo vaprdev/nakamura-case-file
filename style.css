@@ -1430,43 +1430,167 @@ body {
   border-radius: 3px;
 }
 
-/* Evidence enclosed in the journal: sheets and prints laid on the page, each opens for inspection. */
-.enclosures .evidence-item {
-  position: absolute;
-  margin: 0;
+
+/* Photocopied typed report: flat grey-white stock, toner speckle, no ruled lines. */
+.page.copy {
+  padding: 44px 44px 36px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #262320;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='1' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)' opacity='.07'/%3E%3C/svg%3E"),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.07), transparent 5%, transparent 96%, rgba(0, 0, 0, 0.05)),
+    #e7e4db;
+  text-shadow: 0 0 0.5px rgba(30, 28, 25, 0.7);
+}
+.page.copy .letterhead {
+  color: #55504a;
+  border-bottom-color: #8a857c;
+}
+.page.copy h2 {
+  margin: 18px 0 10px;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.page.copy p {
+  margin: 0 0 9px;
+}
+.page.copy .fields,
+.page.copy .timeline {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 2px 18px;
+  margin: 0 0 6px;
+}
+.page.copy .fields dt {
+  min-width: 70px;
+}
+.page.copy .fields dt::after {
+  content: ":";
+}
+.page.copy .timeline dt {
+  color: #262320;
+}
+.page.copy .query {
+  margin-top: 30px;
+  font-family: "Reenie Beanie", "Bradley Hand", cursive;
+  font-size: 30px;
+  color: #1c1d24;
+  text-shadow: none;
+  opacity: 0.8;
+  transform: rotate(-2deg);
+  transform-origin: left;
+}
+
+/* Exhibit pages: an official header, then the item itself, clipped or laid into the file. */
+.page.exhibit .sub {
+  margin: -4px 0 26px;
+  color: #55504a;
+}
+.exhibit .evidence-item {
+  position: relative;
+  margin: 0 auto;
   cursor: pointer;
   transition: filter 0.25s, box-shadow 0.25s;
 }
-.enclosures .evidence-item img {
+.exhibit .evidence-item img {
   display: block;
   width: 100%;
   height: auto;
 }
-.enclosures .sheet-item {
-  padding: 5px;
-  background: #e6dfcf;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+.exhibit .sheet-item {
+  padding: 6px;
+  background: #ebe7dd;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+  rotate: -0.8deg;
 }
-.enclosures .print-item {
-  padding: 9px 9px 7px;
-  background: #ece6d8;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+.exhibit .print-item {
+  width: 88%;
+  padding: 10px 10px 30px;
+  background: #efeae0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  rotate: 1.2deg;
 }
-.enclosures .print-item .clip {
+.exhibit .print-item .clip {
   left: auto;
-  right: 38px;
+  right: 44px;
 }
-.enclosures figcaption {
-  margin-top: 5px;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  color: var(--faded);
-}
-.enclosures .evidence-item:hover {
-  z-index: 5;
-  filter: brightness(1.08);
+.exhibit .evidence-item:hover {
+  filter: brightness(1.06);
   box-shadow:
-    0 6px 14px rgba(0, 0, 0, 0.4),
-    0 0 0 2px rgba(255, 214, 160, 0.6),
-    0 0 26px rgba(255, 214, 160, 0.35);
+    0 5px 12px rgba(0, 0, 0, 0.35),
+    0 0 0 2px rgba(255, 214, 160, 0.55),
+    0 0 24px rgba(255, 214, 160, 0.3);
+}
+
+/* Case cover: a typed cover sheet on the manila, one quiet stamp, one ballpoint line. */
+.coversheet {
+  position: absolute;
+  left: 78px;
+  top: 118px;
+  width: 444px;
+  padding: 30px 32px 34px;
+  background: #e9e5da;
+  color: #262320;
+  font-size: 12.5px;
+  line-height: 1.55;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 0 0.5px rgba(30, 28, 25, 0.7);
+  rotate: -0.6deg;
+}
+.coversheet .org {
+  letter-spacing: 0.12em;
+  font-size: 11.5px;
+  color: #3c3833;
+}
+.coversheet .kind {
+  margin: 22px 0 18px;
+  padding: 6px 0;
+  border-top: 1px solid #8a857c;
+  border-bottom: 1px solid #8a857c;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+}
+.coversheet dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 3px 16px;
+  margin: 0;
+}
+.coversheet dt::after {
+  content: ":";
+}
+.coversheet dd {
+  margin: 0;
+}
+.coversheet .status {
+  margin-top: 18px;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+}
+.stamp.quiet {
+  position: static;
+  display: inline-block;
+  margin-top: 22px;
+  padding: 3px 9px;
+  border: 1.5px solid rgba(140, 50, 44, 0.8);
+  color: rgba(140, 50, 44, 0.85);
+  font: bold 11px "Courier New", Courier, monospace;
+  letter-spacing: 0.14em;
+  transform: rotate(-2deg);
+  opacity: 0.8;
+}
+.ballpoint {
+  position: absolute;
+  left: 104px;
+  top: 560px;
+  font-family: "Reenie Beanie", "Bradley Hand", cursive;
+  font-size: 30px;
+  color: #22305c;
+  opacity: 0.85;
+  transform: rotate(-2.5deg);
+  mix-blend-mode: multiply;
 }
