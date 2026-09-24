@@ -1312,10 +1312,19 @@ body {
   color: #fff3dc;
 }
 
+.plate {
+  position: absolute;
+  left: 1318px;
+  top: 262px;
+  width: 262px;
+  height: 262px;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.65)) brightness(0.75) saturate(0.7);
+}
 .d-burger {
-  left: 1330px;
-  top: 300px;
-  width: 240px;
+  left: 1340px;
+  top: 292px;
+  width: 218px;
   transform: rotate(-6deg);
   filter: drop-shadow(0 14px 14px rgba(0, 0, 0, 0.65)) saturate(0.55) brightness(0.72) sepia(0.25);
   transition: transform 0.15s;
