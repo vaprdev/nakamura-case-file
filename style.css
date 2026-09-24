@@ -1607,3 +1607,15 @@ body {
   color: #55504a;
   font-size: 13px;
 }
+
+.d-cassette {
+  left: 1440px;
+  top: 330px;
+  width: 190px;
+  height: auto;
+  transform: rotate(6deg);
+  filter: drop-shadow(0 14px 14px rgba(0, 0, 0, 0.6)) saturate(0.6) brightness(0.72) sepia(0.15);
+}
+.d-cassette.playing {
+  filter: drop-shadow(0 14px 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 16px rgba(255, 190, 120, 0.45)) saturate(0.7) brightness(0.85) sepia(0.15);
+}

@@ -58,7 +58,7 @@ function startDesk() {
     return glance(el, Number(el.dataset.look))
   }
   run(
-    [".d-mug", ".d-donut", ".d-ashtray", ".front"].flatMap(look),
+    [".d-mug", ".d-donut", ".d-ashtray", ".d-cassette", ".front"].flatMap(look),
     openFolder,
   )
 }
@@ -227,6 +227,27 @@ async function bite() {
   await sleep(2.6)
   donut.classList.remove("bitten")
   biting = false
+}
+
+// The recorder: a press on PLAY, the tape recording, then the key clicking back up. A second press stops it.
+let taping = false
+async function toggleTape() {
+  if (!audio) return
+  if (taping) return stopTape()
+  taping = true
+  document.querySelector(".d-cassette").classList.add("playing")
+  audio.duck(true)
+  await audio.playThrough("tape-start.mp3")
+  if (taping) await audio.playThrough("memo.mp3")
+  if (taping) stopTape()
+}
+
+function stopTape() {
+  taping = false
+  audio.stopClips()
+  audio.playThrough("tape-stop.mp3")
+  audio.duck(false)
+  document.querySelector(".d-cassette").classList.remove("playing")
 }
 
 async function sip() {
@@ -518,6 +539,7 @@ window.addEventListener("pointerdown", (event) => {
   if (event.target === sound || state === "intro") return
   if (event.target.closest(".d-ashtray")) return takeDrag()
   if (event.target.closest(".d-mug")) return sip()
+  if (event.target.closest(".d-cassette")) return toggleTape()
   if (event.target.closest(".d-donut")) return bite()
   if (state === "closed" && event.target.closest(".folder")) return openFolder()
   if (state === "reading" && pages[current].contains(event.target)) turnPage()
@@ -557,12 +579,14 @@ setTimeout(lightning, 9000)
 
 function startAudio() {
   const clips = {}
-  const play = async (url, wobble) => {
-    clips[url] ??= fetch(url)
+  const running = new Set()
+  const load = (url) =>
+    (clips[url] ??= fetch(url)
       .then((response) => response.arrayBuffer())
-      .then((data) => ctx.decodeAudioData(data))
+      .then((data) => ctx.decodeAudioData(data)))
+  const play = async (url, wobble) => {
     const source = ctx.createBufferSource()
-    source.buffer = await clips[url]
+    source.buffer = await load(url)
     source.playbackRate.value = 1 - wobble / 2 + Math.random() * wobble
     source.connect(sfx)
     source.start()
@@ -582,7 +606,7 @@ function startAudio() {
     node.frequency.value = frequency
     return node
   }
-  startScore(ctx, out, filter)
+  const score = startScore(ctx, out, filter)
 
   // Paper is filtered noise with a sweeping band; the thump is the page settling.
   const rustle = (time, duration, from, to, level) => {
@@ -681,6 +705,22 @@ function startAudio() {
     },
     // Recordings from freesound.org (via Pixabay): "sipping coffee" and "lighting a cigarette".
     slurp: () => play("sip.mp3", 0.1),
+    // Plays a clip to the end; resolves early if stopClips() cuts it off.
+    playThrough: async (url) => {
+      const source = ctx.createBufferSource()
+      source.buffer = await load(url)
+      source.connect(sfx)
+      const done = new Promise((resolve) => (source.onended = resolve))
+      running.add(source)
+      source.start()
+      await done
+      running.delete(source)
+    },
+    stopClips: () => running.forEach((source) => source.stop()),
+    duck: (on) => {
+      score.gain.cancelScheduledValues(ctx.currentTime)
+      score.gain.setTargetAtTime(on ? 0.15 : 0.9, ctx.currentTime, 0.4)
+    },
     bite: () => play("bite.mp3", 0.06),
     drag: () => play("drag.mp3", 0.04),
     clink: (level) => {
@@ -812,4 +852,5 @@ function startScore(ctx, out, filter) {
       step++
     }
   }, 100)
+  return master
 }
