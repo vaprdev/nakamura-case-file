@@ -37,15 +37,10 @@ body {
 .stage {
   position: fixed;
   left: 50%;
-  top: 58%;
+  top: 50%;
   width: 1560px;
   height: 960px;
-  transform: translate(-50%, -50%) scale(var(--fit));
-  transition: top 1.25s ease-in-out, transform 1.25s ease-in-out;
-}
-.stage.closeup {
-  top: 50%;
-  transform: translate(-50%, -50%) scale(calc(var(--fit) * 1.6));
+  transform-origin: 50% 50%;
 }
 .stain {
   position: absolute;

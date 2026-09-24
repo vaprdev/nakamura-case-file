@@ -68,8 +68,8 @@ async function openFolder() {
   state = "opening"
   frontCover.classList.remove("hot")
   auto.running = false
-  stage.classList.add("closeup")
-  layout()
+  // Move in first, then open, so the camera and the cover never animate at the same time.
+  await setZoomSmooth(1)
   const r = cover.getBoundingClientRect()
   aim(r.right - 60 * fit, r.top + r.height * 0.6)
   audio?.touch()
@@ -141,8 +141,8 @@ function endCase() {
     })
     pages.forEach((page) => page.style.removeProperty("--shade"))
     setFolder(0)
-    stage.classList.remove("closeup")
-    layout()
+    zoom = 0
+    applyStage()
     spot.x = spot.tx = innerWidth / 2
     spot.y = spot.ty = innerHeight / 2
   }, 2500)
@@ -171,8 +171,7 @@ async function closeFolder() {
     leaf.style.visibility = ""
   })
   current = 0
-  stage.classList.remove("closeup")
-  layout()
+  await setZoomSmooth(0)
   state = "closed"
   frontCover.classList.add("hot")
 }
@@ -460,10 +459,28 @@ function drawLight(now) {
   root.style.setProperty("--ry", `${ry}px`)
 }
 
+// The camera: one transform for position and scale, animated on the shared clock.
+let wide = 1
+let zoom = 0
+function applyStage() {
+  const e = easeInOut(zoom)
+  const scale = wide * (1 + 0.6 * e)
+  const y = innerHeight * (0.08 - 0.08 * e)
+  stage.style.transform = `translate(-50%, -50%) translate3d(0, ${y}px, 0) scale(${scale})`
+  fit = scale
+}
+function setZoomSmooth(target) {
+  const from = zoom
+  return tween(0.9, (k) => {
+    zoom = from + (target - from) * k
+    applyStage()
+  })
+}
+
 function layout() {
-  const wide = Math.min(innerWidth / 1560, innerHeight / 960) * 0.55
-  fit = wide * (stage.classList.contains("closeup") ? 1.6 : 1)
+  wide = Math.min(innerWidth / 1560, innerHeight / 960) * 0.55
   root.style.setProperty("--fit", String(wide))
+  applyStage()
   smokeCanvas.width = Math.ceil(innerWidth * SMOKE_RES)
   smokeCanvas.height = Math.ceil(innerHeight * SMOKE_RES)
 }
