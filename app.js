@@ -11,6 +11,7 @@ const cover = document.querySelector(".cover")
 const pagesBox = document.querySelector(".pages")
 const pages = [...document.querySelectorAll(".page")]
 const sound = document.querySelector(".sound")
+const closeButton = document.querySelector(".close-file")
 const card = document.querySelector(".card")
 const intro = document.querySelector(".intro")
 const frontCover = document.querySelector(".face.front")
@@ -53,7 +54,7 @@ function startDesk() {
     return glance(el, Number(el.dataset.look))
   }
   run(
-    [".stack", ".d-mug", ".d-ashtray", ".d-pack", ".d-lighter", ".d-matches", ".d-floppy", ".front"].flatMap(look),
+    [".d-mug", ".d-ashtray", ".front"].flatMap(look),
     openFolder,
   )
 }
@@ -77,6 +78,7 @@ async function openFolder() {
   await sleep(0.8)
   state = "reading"
   current = 0
+  closeButton.hidden = false
   readPage(true)
 }
 
@@ -123,6 +125,7 @@ async function turnPage() {
 }
 
 function endCase() {
+  closeButton.hidden = true
   pages.forEach((page) => page.classList.remove("hot"))
   state = "ending"
   card.classList.add("show")
@@ -146,6 +149,28 @@ function endCase() {
 function setFolder(e) {
   folder.style.transform = `translateX(${-300 * (1 - e)}px) rotate(${-1.4 + 0.8 * e}deg)`
   cover.style.transform = `rotateY(${-180 * e}deg)`
+}
+
+// Close the file and put it back on the desk; it stays shut until clicked again.
+async function closeFolder() {
+  if (state !== "reading") return
+  state = "closing"
+  auto.running = false
+  closeButton.hidden = true
+  pages.forEach((page) => page.classList.remove("hot"))
+  audio?.folder()
+  await tween(1.4, (k) => setFolder(1 - easeInOut(k)))
+  audio?.land(0.3)
+  leaves.forEach((leaf) => {
+    leaf.style.transform = ""
+    leaf.style.clipPath = ""
+    leaf.style.visibility = ""
+  })
+  current = 0
+  stage.classList.remove("closeup")
+  layout()
+  state = "closed"
+  frontCover.classList.add("hot")
 }
 
 // Point the light somewhere while the autopilot is paused, unless the user is steering.
@@ -424,9 +449,11 @@ window.addEventListener("pointermove", (event) => {
   spot.tx = event.clientX
   spot.ty = event.clientY
 })
+closeButton.addEventListener("click", closeFolder)
 window.addEventListener("pointerdown", (event) => {
+  if (event.target === closeButton) return
   if (event.target === sound || state === "intro") return
-  if (event.target.closest(".d-ashtray, .d-pack")) return takeDrag()
+  if (event.target.closest(".d-ashtray")) return takeDrag()
   if (event.target.closest(".d-mug")) return sip()
   if (state === "closed" && event.target.closest(".folder")) return openFolder()
   if (state === "reading" && pages[current].contains(event.target)) turnPage()
