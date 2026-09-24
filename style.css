@@ -1358,3 +1358,67 @@ body {
     transform: rotate(-4deg) scale(0.94, 0.9);
   }
 }
+
+/* The desk: dark mahogany with a worn green leather blotter under the file. */
+.desk {
+  position: absolute;
+  left: -160px;
+  right: -160px;
+  top: -70px;
+  bottom: -700px;
+  border-radius: 10px 10px 0 0;
+  background:
+    linear-gradient(rgba(255, 210, 150, 0.1), transparent 3%),
+    radial-gradient(ellipse 70% 40% at 45% 20%, rgba(255, 190, 120, 0.1), transparent 70%),
+    repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(178deg, rgba(120, 60, 25, 0.12) 0 9px, transparent 9px 23px, rgba(0, 0, 0, 0.14) 23px 27px, transparent 27px 41px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 12%, transparent 88%, rgba(0, 0, 0, 0.35)),
+    linear-gradient(#4a2814, #331b0d 40%, #22120a);
+  box-shadow:
+    inset 0 3px 0 rgba(255, 215, 160, 0.18),
+    inset 0 14px 18px rgba(0, 0, 0, 0.45),
+    0 -18px 40px rgba(0, 0, 0, 0.75);
+}
+.desk::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.18;
+}
+.desk::after {
+  /* scuffs and old rings in the varnish */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 44%, transparent 58px, rgba(0, 0, 0, 0.22) 60px, transparent 64px),
+    radial-gradient(ellipse at 88% 70%, rgba(255, 220, 170, 0.05), transparent 30%),
+    linear-gradient(100deg, transparent 30%, rgba(255, 230, 190, 0.04) 45%, transparent 60%);
+}
+.blotter {
+  position: absolute;
+  left: 290px;
+  top: 110px;
+  width: 1260px;
+  height: 900px;
+  border-radius: 6px;
+  filter: brightness(0.55) saturate(0.8);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='l'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0.12 0.04  0 0 0 0.16 0.08  0 0 0 0.12 0.05  0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23l)'/%3E%3C/svg%3E"),
+    #16241a;
+  box-shadow:
+    inset 0 0 0 10px #2e1a0e,
+    inset 0 0 0 12px rgba(0, 0, 0, 0.5),
+    inset 0 0 60px rgba(0, 0, 0, 0.55),
+    0 2px 6px rgba(0, 0, 0, 0.6);
+}
+.blotter::after {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px dashed rgba(200, 180, 130, 0.25);
+  border-radius: 3px;
+}
