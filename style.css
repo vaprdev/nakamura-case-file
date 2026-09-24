@@ -1261,30 +1261,6 @@ body {
 @keyframes window-rain {
   to { background-position: -14px 50px; }
 }
-.nameplate {
-  position: absolute;
-  z-index: 2;
-  left: 0.8%;
-  top: 28%;
-  padding: 9px 11px;
-  border: 1px solid rgba(179, 152, 102, 0.42);
-  background: linear-gradient(120deg, #524131, #211d18);
-  color: #baa376;
-  font-family: Georgia, serif;
-  font-size: 10px;
-  letter-spacing: 0.09em;
-  text-align: center;
-  box-shadow: 0 5px 16px #0008;
-}
-.nameplate span,
-.nameplate small {
-  display: block;
-}
-.nameplate small {
-  margin-top: 3px;
-  font-size: 5px;
-  letter-spacing: 0.06em;
-}
 
 /* Anything clickable gets the pointer and a warm glow on hover. */
 .hot {
