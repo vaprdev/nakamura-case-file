@@ -37,10 +37,10 @@ body {
 .stage {
   position: fixed;
   left: 50%;
-  top: 62%;
+  top: 69%;
   width: 1560px;
   height: 960px;
-  transform: translate(-50%, -50%) scale(var(--fit));
+  transform: translate(-50%, -50%) scale(var(--fit)) perspective(2200px) rotateX(9deg);
 }
 .stain {
   position: absolute;
@@ -1200,72 +1200,103 @@ body {
   pointer-events: auto;
 }
 
-/* The office around the desk */
-.room,
-.roomlight {
+/* The photographed room establishes depth; the case materials occupy the near plane. */
+.office {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  overflow: hidden;
   pointer-events: none;
+  background: #0e0c09;
 }
-.roomlight {
-  z-index: 11;
-  mix-blend-mode: screen;
+.office::before {
+  content: "";
+  position: absolute;
+  inset: -2%;
+  background: url("office.jpg") center 46% / cover no-repeat;
+  filter: brightness(0.67) contrast(1.15) saturate(0.65) sepia(0.18);
+  transform: scale(1.015);
+}
+.office::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 45% 60% at 30% 20%, rgba(235, 158, 74, 0.12), transparent),
+    linear-gradient(180deg, rgba(4, 6, 9, 0.06), rgba(5, 5, 6, 0.3) 65%, rgba(3, 3, 4, 0.6));
+}
+.office.lightning::before {
+  filter: brightness(1.05) contrast(1.05) saturate(0.43);
+}
+.office.lightning::after {
+  background: rgba(158, 174, 206, 0.2);
+}
+.rain-window {
+  position: absolute;
+  left: 10%;
+  top: 1%;
+  width: 37%;
+  height: 54%;
+  z-index: 1;
+  opacity: 0.38;
+  background: repeating-linear-gradient(105deg, transparent 0 20px, rgba(210, 215, 225, 0.2) 21px, transparent 22px 41px);
+  -webkit-mask: linear-gradient(to bottom, #000, transparent 96%);
+  mask: linear-gradient(to bottom, #000, transparent 96%);
+  animation: window-rain 0.8s linear infinite;
+}
+@keyframes window-rain {
+  to { background-position: -14px 50px; }
+}
+.nameplate {
+  position: absolute;
+  z-index: 2;
+  left: 0.8%;
+  top: 28%;
+  padding: 9px 11px;
+  border: 1px solid rgba(179, 152, 102, 0.42);
+  background: linear-gradient(120deg, #524131, #211d18);
+  color: #baa376;
+  font-family: Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-align: center;
+  box-shadow: 0 5px 16px #0008;
+}
+.nameplate span,
+.nameplate small {
+  display: block;
+}
+.nameplate small {
+  margin-top: 3px;
+  font-size: 5px;
+  letter-spacing: 0.06em;
 }
 .desktop {
   position: absolute;
-  left: -70px;
-  right: -70px;
-  top: -40px;
-  bottom: -700px;
+  left: -40px;
+  right: -40px;
+  top: -100px;
+  bottom: -80px;
   background:
-    repeating-linear-gradient(91deg, rgba(0, 0, 0, 0.12) 0 1px, transparent 1px 7px),
-    repeating-linear-gradient(89deg, rgba(255, 220, 170, 0.025) 0 3px, transparent 3px 23px),
-    linear-gradient(#3b2b1d, #2a1e14 30%, #1f160f);
-  border-top: 14px solid #4a3624;
-  box-shadow: 0 -2px 0 #6a4f35, 0 -40px 80px rgba(0, 0, 0, 0.7);
+    repeating-linear-gradient(91deg, rgba(0, 0, 0, 0.09) 0 1px, transparent 1px 9px),
+    radial-gradient(ellipse at 30% 12%, rgba(129, 87, 47, 0.25), transparent 55%),
+    linear-gradient(#372617, #24180f 38%, #150f0b);
+  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+  box-shadow: inset 0 35px 40px #0806039c, inset 0 -35px 55px #0008;
 }
-.rain line {
-  stroke: #b8c4dc;
-  stroke-width: 0.8;
-  opacity: 0.35;
+.desktop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.06 1.3' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  opacity: 0.23;
 }
-.rain {
-  animation: rain 0.55s linear infinite;
-}
-@keyframes rain {
-  to {
-    transform: translate(-30px, 240px);
-  }
-}
-.drops circle {
-  fill: #c8d2e6;
-  opacity: 0.3;
-}
-.drops .slide {
-  animation: trickle 6s ease-in infinite;
-}
-@keyframes trickle {
-  0%,
-  40% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(160px);
-    opacity: 0;
-  }
-}
-.neon {
-  animation: neon 7s steps(1) infinite;
-}
-@keyframes neon {
-  0%, 61%, 63%, 70%, 100% {
-    opacity: 1;
-  }
-  62%, 69% {
-    opacity: 0.2;
-  }
+.desktop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 22% 0%, rgba(196, 138, 68, 0.09), transparent 52%);
+  pointer-events: none;
 }
 
 /* Anything clickable gets the pointer and a warm glow on hover. */
@@ -1294,9 +1325,7 @@ body {
   filter: brightness(1.25) drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.35));
 }
 @media (prefers-reduced-motion: reduce) {
-  .rain,
-  .drops .slide,
-  .neon {
+  .rain-window {
     animation: none;
   }
 }

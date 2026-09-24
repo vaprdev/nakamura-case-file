@@ -461,50 +461,16 @@ intro.addEventListener("click", () => {
 })
 
 layout()
-fillWindow()
 setFolder(0)
 requestAnimationFrame(frame)
 
-// ---- The office: rain on the window and the occasional storm ----
-
-function fillWindow() {
-  const NS = "http://www.w3.org/2000/svg"
-  const rain = document.querySelector(".rain")
-  const drops = document.querySelector(".drops")
-  // Streaks tile every 240 units vertically so the falling animation loops seamlessly.
-  for (let i = 0; i < 90; i++) {
-    const x = 590 + Math.random() * 450
-    const y = Math.random() * 240
-    const len = 8 + Math.random() * 14
-    ;[y - 240, y].forEach((yy) => {
-      const line = document.createElementNS(NS, "line")
-      Object.entries({ x1: x, y1: yy, x2: x - len * 0.12, y2: yy + len }).forEach(([k, v]) => line.setAttribute(k, v))
-      rain.append(line)
-    })
-  }
-  for (let i = 0; i < 70; i++) {
-    const circle = document.createElementNS(NS, "circle")
-    Object.entries({ cx: 602 + Math.random() * 396, cy: 32 + Math.random() * 232, r: 0.8 + Math.random() * 2.2 }).forEach(([k, v]) =>
-      circle.setAttribute(k, v),
-    )
-    if (i % 9 === 0) {
-      circle.classList.add("slide")
-      circle.style.animationDelay = `${-Math.random() * 6}s`
-    }
-    drops.append(circle)
-  }
-}
-
+// A lightning strike briefly throws the room into relief; thunder follows at a distance.
 function lightning() {
-  const flash = document.querySelector(".flash")
-  const pane = document.querySelector(".flash-pane")
-  const pattern = [0.35, 0.05, 0.5, 0.12, 0]
-  pattern.forEach((level, i) =>
-    setTimeout(() => {
-      flash.setAttribute("opacity", String(level * 0.35))
-      pane.setAttribute("opacity", String(level))
-    }, i * 90 + (i > 1 ? 120 : 0)),
-  )
+  const office = document.querySelector(".office")
+  office.classList.add("lightning")
+  setTimeout(() => office.classList.remove("lightning"), 140)
+  setTimeout(() => office.classList.add("lightning"), 230)
+  setTimeout(() => office.classList.remove("lightning"), 340)
   setTimeout(() => audio?.thunder(), 1200 + Math.random() * 1600)
   setTimeout(lightning, 16000 + Math.random() * 26000)
 }
