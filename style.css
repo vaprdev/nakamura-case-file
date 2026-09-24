@@ -909,12 +909,39 @@ body {
     repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 5px),
     #0c0a08;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.6s;
+  transition: opacity 0.4s, visibility 0s 0.4s;
 }
 .evidence.open {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
+  transition: opacity 0.4s;
+}
+/* The whole document, uncropped, as large as the window allows. */
+.evidence-view {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+.evidence-view img {
+  display: block;
+  max-width: 92vw;
+  max-height: 82vh;
+  object-fit: contain;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+}
+.evidence-view figcaption {
+  color: #b0a48e;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+}
+.evidence .evidence-close {
+  position: fixed;
+  top: 20px;
+  right: 22px;
 }
 .evidence .inner {
   position: relative;
@@ -1406,4 +1433,45 @@ body {
   inset: 20px;
   border: 1px dashed rgba(200, 180, 130, 0.25);
   border-radius: 3px;
+}
+
+/* Evidence enclosed in the journal: sheets and prints laid on the page, each opens for inspection. */
+.enclosures .evidence-item {
+  position: absolute;
+  margin: 0;
+  cursor: pointer;
+  transition: filter 0.25s, box-shadow 0.25s;
+}
+.enclosures .evidence-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.enclosures .sheet-item {
+  padding: 5px;
+  background: #e6dfcf;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+.enclosures .print-item {
+  padding: 9px 9px 7px;
+  background: #ece6d8;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+}
+.enclosures .print-item .clip {
+  left: auto;
+  right: 38px;
+}
+.enclosures figcaption {
+  margin-top: 5px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--faded);
+}
+.enclosures .evidence-item:hover {
+  z-index: 5;
+  filter: brightness(1.08);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.4),
+    0 0 0 2px rgba(255, 214, 160, 0.6),
+    0 0 26px rgba(255, 214, 160, 0.35);
 }

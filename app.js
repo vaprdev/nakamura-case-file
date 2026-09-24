@@ -12,6 +12,10 @@ const pagesBox = document.querySelector(".pages")
 const pages = [...document.querySelectorAll(".page")]
 const sound = document.querySelector(".sound")
 const closeButton = document.querySelector(".close-file")
+const viewer = document.querySelector(".evidence")
+const viewerImage = viewer.querySelector("img")
+const viewerLabel = viewer.querySelector("figcaption")
+const viewerClose = viewer.querySelector(".evidence-close")
 const card = document.querySelector(".card")
 const intro = document.querySelector(".intro")
 const frontCover = document.querySelector(".face.front")
@@ -171,6 +175,26 @@ async function closeFolder() {
   layout()
   state = "closed"
   frontCover.classList.add("hot")
+}
+
+// ---- Evidence inspection ----
+
+let resumeAfterInspect = false
+function inspect(item) {
+  resumeAfterInspect = auto.running
+  auto.running = false
+  viewerImage.src = item.dataset.src
+  viewerImage.alt = item.querySelector("img").alt
+  viewerLabel.textContent = item.dataset.label
+  viewer.classList.add("open")
+  audio?.touch()
+  viewerClose.focus()
+}
+
+function closeInspect() {
+  if (!viewer.classList.contains("open")) return
+  viewer.classList.remove("open")
+  if (resumeAfterInspect && state === "reading") auto.running = true
 }
 
 // Point the light somewhere while the autopilot is paused, unless the user is steering.
@@ -462,7 +486,17 @@ window.addEventListener("pointermove", (event) => {
   spot.ty = event.clientY
 })
 closeButton.addEventListener("click", closeFolder)
+viewerClose.addEventListener("click", closeInspect)
+viewer.addEventListener("click", (event) => {
+  if (event.target === viewer) closeInspect()
+})
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeInspect()
+})
 window.addEventListener("pointerdown", (event) => {
+  if (viewer.classList.contains("open")) return
+  const item = event.target.closest(".evidence-item")
+  if (item && state === "reading" && pages[current].contains(item)) return inspect(item)
   if (event.target === closeButton) return
   if (event.target === sound || state === "intro") return
   if (event.target.closest(".d-ashtray")) return takeDrag()
